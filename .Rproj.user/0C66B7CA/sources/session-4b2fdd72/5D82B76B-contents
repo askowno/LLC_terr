@@ -1,0 +1,351 @@
+---
+title: "Land Cover Change - South Africa 1990-2022"
+subtitle: "Change in LCLU (7 class) per terrestrial ecosystem - restricted to mainland South Africa"
+author: "SANBI"
+date: January  2025
+format: 
+ html:
+  toc: true
+  toc-location: left
+  embed-resources: true
+editor: visual
+execute: 
+  eval: false
+bibliography: references.bib
+---
+
+### Approach
+
+Cross tabulate terrestrial ecosystem type data (vegetation map data) with land cover data 1990-2022 for South Africa. Two versions of this analysis have been developed. This version is focussed on producing statistics on land cover change for South Africa and includes steps to mask out ecosystem extent that extends into Eswatini and Lesotho. The results carry the text "SA" to denote this. The SA-only analysis is also used in computation of the (terrestrial) Ecosystem Area Index for South Africa, and the (terrestrial) Ecosystem Protection Level assessment. For (terrestrial) Red List of Ecosystems assessments the version without masking of Lesotho and Eswaniti should be used as this allows for a global assessment scope for a few ecosystems that are shared across the SA - Lesotho and SA - Eswatini borders.
+
+### Load required packages
+
+```{r}
+#load packages  
+library(terra) 
+library(tidyverse)
+library(sf)
+library(PROJ) # seems to be required due to a conflict with postgres on some machines
+```
+
+### Data sources & import:
+
+1\. South African National Land Cover data sets for 1990, 2014, 2018, 2020 and 2022 (prepared by the National Department of Forestry, Fisheries and the Environment) were adjusted to have a common raster resolution (20m) and snapped to the extent of 2022 data. The data were reclassified in ARCGIS PRO into seven classes: 1 = Natural; 2 = Secondary Natural, 3 = Artificial water bodies, 4 = Built up, 5 = Croplands, 6 = Mines, 7 = Plantation. These datasets are aligned to same extent, resolution and projection. They include land cover for Eswatini and Lesotho (although this is masked out in this analysis) based on ESA Africa 2016 landcover product (ie no land cover change data).
+
+2\. National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+```{r}
+#Add data (note all LC products use  WGS84 Albers Equal Area, central meridian = 25; std parallel1 = -24; std parallel2 = -33). Use Tif version as this is processed faster by R terra. 
+
+# the data are available at this link https://www.dropbox.com/scl/fo/tcmdhlggiaq3d2brvize7/AHvcF04czyJvGnyZSwqfK5w?rlkey=ua3ollzupol34ditiqqvsdcw0&dl=0 download them to a location on the local machine then adjust the file paths as required  
+
+lc1990 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc1990_7class.tif") 
+lc2014 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2014_7class.tif")
+lc2018 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2018_7class.tif")
+lc2020 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2020_7class.tif")
+lc2022 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif")
+
+
+#aggregate to test - drop this step when all is working - full processing takes 16hours -----------------------------------------------------------------------
+# agg_fact <- 20
+#  mode_function <- function(x) {
+#      ux <- unique(x)
+#      ux[which.max(tabulate(match(x, ux)))]
+#  }
+# lc1990 <- aggregate(lc1990, fact = agg_fact, fun = mode_function)
+# lc2014 <- resample(lc2014, lc1990, method = "near")
+# lc2018 <- resample(lc2018, lc1990, method = "near")
+# lc2020 <- resample(lc2020, lc1990, method = "near")
+# lc2022 <- resample(lc2022, lc1990, method = "near")
+
+#----------------------------------------------------------------------------
+
+veg <- vect("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/NLC_Change.gdb", "NVM2024Final_IEM5_12_07012025")  #ensure it uses proj =  wgs84 aea cm 25 -24 -33
+
+# to help differentiate masked areas (LES and SWA) from NON TERRESTRIAL areas add "NOTVEG" to T_MAPCODE where T_NAME = "Non-Terrestrial*"
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE) 
+
+# rasterise the veg vector
+vegrast <- rasterize(veg,lc1990,"T_MAPCODE") 
+
+```
+
+#### Mask out Lesotho and Eswatini
+
+To ensure the statistics on land cover change are applicable to South Africa the countries of Lesotho and Eswatini (which are covered by the input LC and VEG data above) need to be masked out. For RLE processes these are left in the workflow as the statistics need to be applicable to whole vegetation types.
+
+```{r}
+# import a polygon  of  Eswatini and Lesotho then make a raster mask for this and apply to vegmap so the stats generated are National Statistics
+
+esw_les <- vect("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/NLC_change.gdb", "mask_esw_les") #ensure it uses proj =  wgs84 aea cm 25 -24 -33
+
+mask_esw_les <- rasterize(esw_les, vegrast, "CODE")
+mask_esw_les <- (mask_esw_les =="LeS") # had to do this as just using mask raster does not work for some reason
+
+vegrast_masked <- mask(vegrast, mask_esw_les, maskvalue=TRUE)
+
+```
+
+### Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+
+***Note this process takes approximately 2 hours per cross tabulation.***
+
+```{r}
+# Analysis #Step 1-2  
+# get LC  at 1990 time period
+tb1990 <- as_tibble(crosstab(c(lc1990,vegrast_masked)))  
+tb1990 <- tb1990 %>% 
+  add_column(YEAR = 1990) %>% 
+  rename(LC = nlc1990_7class) 
+# get LC at 2014 time period
+tb2014 <- as_tibble(crosstab(c(lc2014,vegrast_masked)))  
+tb2014 <- tb2014 %>% 
+  add_column(YEAR =2014) %>% 
+  rename(LC = nlc2014_7class) 
+# get LC at 2018 time period
+tb2018 <- as_tibble(crosstab(c(lc2018,vegrast_masked)))  
+tb2018 <- tb2018 %>% 
+  add_column(YEAR =2018) %>% 
+  rename(LC = nlc2018_7class)  
+# get LC  at 2020 time period
+tb2020 <- as_tibble(crosstab(c(lc2020,vegrast_masked)))  
+tb2020 <- tb2020 %>% 
+  add_column(YEAR =2020) %>% 
+  rename(LC = nlc2020_7class) 
+# get LC  at 2020 time period
+tb2022 <- as_tibble(crosstab(c(lc2022,vegrast_masked)))  
+tb2022 <- tb2022 %>% 
+  add_column(YEAR =2022) %>% 
+  rename(LC = nlc2022_7class) 
+
+# build a table for the 1750 LC where all is natural- not used much. 
+tb1750 <- tb1990 %>%
+ filter(T_MAPCODE != '<Null>'& T_MAPCODE != " " & LC != 0) %>%
+ mutate (YEAR = 1750) %>%
+ group_by (YEAR, T_MAPCODE) %>%
+ summarise(n = sum(n) , .groups = "drop") %>%
+ mutate(LC = "1") %>% # this in "" because  other LC are char for some reason
+ relocate(YEAR, .after = LC)%>%
+ relocate(LC, .before = T_MAPCODE)
+
+```
+
+### Build results table
+
+Combine (bind) the output tables and convert pixel counts to extent in square kilometers. Pixels in these rasters are 20m x 20m (400 x400 in the test), so conversion requires multiplication by cell area (400m2) (or160000 in test) and division by 1000 000 to result in km2. Add BIOME column using T_MAPCODE prefixes. Clean up field names and remove rows with Null T_MAPCODE values (small areas where vegmap vector includes non terrestrial ecosystems, such as lakes, estuaries). Due to earlier steps non terrestrial areas are retained and have NOTVEG as T_MAPCODE and BIOME . Add text labels for each land cover class.
+
+```{r}
+# Step 3. add extent based on pixel size and then make raster binary by changing 4 to 2 (not natural pixels) and 3 to 1 (natural pixels) 
+lc7_list = list(tb1750,tb1990,tb2014,tb2018,tb2020,tb2022) 
+sa_lc7_rall <- lc7_list %>%  bind_rows() %>%   
+  as_tibble() %>% 
+  filter(T_MAPCODE != '<Null>'& T_MAPCODE != " " & LC != 0) %>%
+  group_by(LC, YEAR, T_MAPCODE) %>%
+  summarise(n = sum(n), .groups = "drop") %>%
+  mutate(BIOME = str_replace_all(
+    T_MAPCODE,c("AT.*" = "Albany Thicket",
+                "AZ.*" = "Azonal",
+                "CB.*" = "IOCB", 
+                "D.*"  = "Desert",
+                "FF.*" = "Fynbos", 
+                "FR.*" = "Fynbos",
+                "FS.*" = "Fynbos",
+                "FO.*" = "Forest", 
+                "G.*" = "Grassland",
+                "NK.*" = "Nama-Karoo", 
+                "NOTVEG.*" = "NOTVEG",
+                "SK.*" = "Succulent Karoo",
+                "SV.*" = "Savanna"))) %>%
+  mutate(LC7_text = case_when(
+    LC == 1 ~ "Natural", 
+    LC == 2 ~ "Secondary-natural", 
+    LC == 3 ~ "Artificial-waterbody", 
+    LC == 4 ~ "Built-up", 
+    LC == 5 ~ "Cropland", 
+    LC == 6 ~ "Mine",
+    LC == 7 ~ "Plantation")) %>%
+  relocate(BIOME, .after = T_MAPCODE)%>%
+  mutate(km2 = n*400/1000000)  #CHECK THIS# for test use 16000 for final use 400
+  
+write.csv(sa_lc7_rall, file = "sa_lc7_rall.csv") 
+
+# This csv can be loaded to excel and using a pivot table summary stats for each type biome LC can be calculated 
+
+```
+
+## Summary metrics
+
+Summarise LC7 for each BIOME, LC class etc. By importing sa_lc7_rall.csv to excel all these summary metrics can be calculated, below are some R functions to summarise and plot the LC data -
+
+```{r}
+# if required import data from spatial analysis above
+# sa_lc7_rall <- read_csv("sa_lc7_rall.csv", show_col_types = FALSE)
+
+# summarise per Veg Type
+options(scipen = 999)
+lc7_veg_2022_prop <- sa_lc7_rall %>%   
+  filter(YEAR == 2022, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE, LC7_text) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+  group_by(T_MAPCODE) %>% # do an additional group_by followed by mutate and ungroup to make perc
+  mutate(proportion = (total_km2 / sum(total_km2))) %>%
+  ungroup() %>%
+  select(-total_km2) %>% #remove to make a neat pivot
+  pivot_wider(names_from = LC7_text, values_from = proportion) %>%
+  relocate(Natural, .after = T_MAPCODE)  %>%
+  relocate(`Secondary-natural`, .after = Natural)
+  
+write.csv(lc7_veg_2022_prop, file = "results_df_lc7_prop_veg_sa_only.csv")  
+
+# example of summary  per LC class  `
+crop_biome <- sa_lc7_rall %>%   
+  filter(LC7_text == "Cropland") %>% # change this to LC class you want stats on. Note: use `` around Nama-Karoo as - is not read correctly in column names and functions.
+  filter(YEAR != 1750) %>%
+  group_by(BIOME,YEAR) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+  group_by() %>%
+  mutate(proportion = total_km2 / sum(total_km2)) %>%
+  select(-total_km2) %>% #remove to make a neat pivot
+  pivot_wider(names_from = YEAR, values_from = proportion)
+  
+# example of summary per biome 
+lc7_AT <- sa_lc7_rall %>%   
+   filter(YEAR != 1750, BIOME == "Albany Thicket", BIOME != "NOTVEG") %>% # # change this to BIOME you want stats on. Note: use `` around Artificial-waterbody and others with - in name.
+  group_by(LC,LC7_text, BIOME,YEAR) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop')%>%
+  pivot_wider(names_from = YEAR, values_from = total_km2)
+
+#summary tables of LC per year in km2 and as proportion of SA
+lc7_year_km2 <- sa_lc7_rall %>%   
+  filter(YEAR != 1750) %>%
+  group_by(LC, LC7_text, YEAR) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+  pivot_wider(names_from = YEAR, values_from = total_km2) 
+
+write.csv(lc7_year_km2, file = "results_df_lc7_km2_year_sa_only.csv")
+
+lc7_year_prop <- sa_lc7_rall %>%   
+  filter(YEAR != 1750) %>%
+  group_by(LC, LC7_text,YEAR) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+  group_by(YEAR) %>%
+  mutate(proportion = total_km2 / sum(total_km2)) %>%
+  select(-total_km2) %>% #remove to make a neat pivot
+  pivot_wider(names_from = YEAR, values_from = proportion) 
+
+write.csv(lc7_year_prop, file = "results_df_lc7_prop_year_sa_only.csv")
+
+test <- sa_lc7_rall %>%   
+  filter(YEAR != 1750) %>%
+  group_by(YEAR) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') 
+  
+```
+
+```{r}
+## plot the LC by BIOME over time  
+# make data proportional
+options(scipen = 999)
+plot_data <- sa_lc7_rall %>%
+  filter(YEAR != 1750, BIOME != "NOTVEG") %>%
+  group_by(BIOME, YEAR, LC7_text) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+    group_by(YEAR,BIOME) %>%
+  mutate(proportion = total_km2 / sum(total_km2)) 
+
+# set colours for each LC class in the plot
+lc_colors <- c(
+  "Artificial-waterbody" = "blue",
+  "Natural" = "darkgreen",
+  "Built-up" = "black",
+  "Cropland" = "brown",
+  "Mine" = "red",
+  "Plantation" = "purple",
+  "Secondary-natural" = "orange"
+)
+ 
+# set the order for the legend
+lc_order <- c("Mine", "Built-up", "Artificial-waterbody", "Cropland", "Plantation","Secondary-natural","Natural")                
+plot_data$LC7_text <- factor(plot_data$LC7_text, levels = lc_order) # this helps set the order
+
+plot <- ggplot(plot_data, aes(x = as.factor(YEAR), y = proportion, fill = (LC7_text))) +
+  geom_bar(stat = "identity", position = "stack") +  # Stacked bar chart
+  scale_fill_manual(values = lc_colors) + 
+  facet_wrap(~ BIOME, ncol = 5) +
+  theme_minimal() +
+  labs(
+    title = "Proportional Extent of Land Cover Classes by Biome and Year",
+    x = "Year",
+    y = "Proportional Extent",
+    fill = "Land Cover Class"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text = element_text(size = 10),
+        legend.position = "bottom",
+        legend.text = element_text(size=7)) 
+
+#export the graph
+ggsave(
+  filename = "land_cover_biome_year_plot_sa_only.jpeg", # File name
+  plot = plot,                            # Plot object
+  device = "jpeg",                        # File format
+  width = 16, height = 12, units = "cm",   # Dimensions
+  dpi = 300                               # Resolution
+)
+```
+
+```{r}
+
+## plot the LC by YEAR   
+
+options(scipen = 999)
+plot_data2 <- sa_lc7_rall %>%
+  group_by(YEAR, LC7_text) %>%
+  summarise(total_km2 = sum(km2),.groups = 'drop') %>%
+  filter(YEAR != 1750) 
+   
+
+# set colours for each LC class in the plot
+lc_colors <- c(
+  "Artificial-waterbody" = "blue",
+  "Natural" = "darkgreen",
+  "Built-up" = "black",
+  "Cropland" = "brown",
+  "Mine" = "red",
+  "Plantation" = "purple",
+  "Secondary-natural" = "orange"
+)
+ 
+# set the order for the legend
+lc_order <- c("Mine", "Built-up", "Artificial-waterbody", "Cropland", "Plantation","Secondary-natural","Natural")                
+plot_data2$LC7_text <- factor(plot_data2$LC7_text, levels = lc_order) # this helps set the order
+
+plot2 <- ggplot(plot_data2, aes(x = as.factor(YEAR), y = total_km2, fill = (LC7_text))) +
+  geom_bar(stat = "identity", position = "stack") +  # Stacked bar chart
+  scale_fill_manual(values = lc_colors) + 
+  theme_minimal() +
+  labs(
+    x = "Year",
+    y = "Extent Km2",
+    fill = "Land Cover Class"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text = element_text(size = 8),
+        legend.position = "right",
+        legend.text = element_text(size=8)) 
+
+#export the graph
+ggsave(
+  filename = "land_cover_year_plot_sa_only.jpeg", # File name
+  plot = plot2,                            # Plot object
+  device = "jpeg",                        # File format
+  width = 12, height = 8, units = "cm",   # Dimensions
+  dpi = 300                               # Resolution
+)
+```

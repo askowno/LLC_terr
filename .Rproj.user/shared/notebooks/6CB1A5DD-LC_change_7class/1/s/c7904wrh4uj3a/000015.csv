@@ -1,0 +1,8 @@
+"0","# Summarise to test"
+"0","#lc7_rall <- read_csv(""lc7_rall.csv"", show_col_types = FALSE)"
+"0","lc7_biome <- lc7_rall %>%   "
+"0","  group_by(YEAR, LC7_text) %>%"
+"0","  summarise(tot_km2 = sum(km2),.groups = 'drop') %>%"
+"0","  pivot_wider(names_from = YEAR, values_from = tot_km2)"
+"0",""
+"0",""
