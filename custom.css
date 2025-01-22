@@ -1,0 +1,128 @@
+/* Header styles */
+h1 {
+  font-size: 19px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 17.5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 16.5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 15.5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Body styling */
+body {
+  font-size: 14.5px;
+  line-height: 2;
+  margin: 2px;
+}
+
+/* Mermaid Container Styling */
+.mermaid-container {
+  font-size: 13px;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Add spacing between cells */
+.cell {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Scrolling container */
+.scrolling {
+  max-height: 400px;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.gt_table {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.fig-align-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Grid to display the links */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.g-col-4 {
+    flex: 1 1 calc(33.333% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Add spacing between cells */
+.cell {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Scrolling container */
+.quarto .output {
+  max-height: 400px;
+  max-width: 1000px;
+  overflow-y: auto;
+  overflow-x: auto;
+  display: block; /* Ensure it is a block-level element */
+}
+
+.gt_table {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Add the figure number before the caption text */
+#fig-eoo-aoo figcaption::before {
+  content: "Figure " counter(figure) ". "; /* Prepend 'Figure X' */
+  counter-increment: figure;               /* Increment the figure counter */
+  font-weight: bold;
+}
+
+/* Style the figcaption text */
+#fig-eoo-aoo figcaption {
+  font-style: italic;  /* Italicize the caption */
+  margin: 0;           /* Remove margin around the caption */
+  display: inline;     /* Ensure it is inline with the number */
+}
+
+/* Removes spacing before and after code chunk */
+.sourceCode, pre {
+  margin: 0 !important;    /* Force removal of margins */
+  padding: 0 !important;   /* Force removal of padding */
+}
+div.sourceCode {
+  margin: 0 !important;    /* Force removal of margins around wrapper */
+  padding: 0 !important;   /* Force removal of padding around wrapper */
+}
