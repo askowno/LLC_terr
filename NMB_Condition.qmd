@@ -1,0 +1,113 @@
+---
+bibliography: references.bib
+---
+
+---
+title: "Nelson Mandela Bay Condition (2015)"
+format: html
+execute:
+  freeze: auto
+---
+
+### Load required packages
+
+```{r}
+#load packages   
+library(terra)  
+library(tidyverse) 
+library(sf) 
+library(PROJ) 
+```
+
+### Data sources & import:
+
+1.  Nelson Mandela Bay degradation data (Stewart et al., 2015) (prepared in ARCGIS PRO, 8 = severely degraded class from NMB degradation, 4 = builtup, 0 = unknown. Class 8 (degradation) is estimated to be equivalent to 80 severity on RLE Criterion D - factors include overgrazing / browsing, fuel wood collection, bush clearing (to promote grazing), resulting in severe reduction in natural tree or shrub cover, changes in species composition (palatable species usually dominant have been lost), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago.
+
+2.  National Land Cover (7 class version prepared by SANBI) 2022.
+
+3.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+    ```{mermaid}
+    flowchart LR
+    A(nmb data) -- reclass and make raster in ARCPRO--> B(nmb_lcdeg2.tif)
+    B --load to R terra--> L
+    I[NLC 2022 DFFE]--reclass in ARCPRO--> J(nlc2022_7class.tif) --load to R terra--> K(Resample to nmb data)
+    K--> L(Cross tabulate)
+    M[National Vegetation Map 2024] --load and make raster --> L
+    L--> N(Summarise)
+    ```
+
+```{r}
+# Add NMB Data (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 8 = severely degraded 80%) (ignore value 4 as this is built up areas and national land cover is judged to be a better source of extent data). 
+ 
+nmb <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/nmb_lcdeg2.tif")
+
+# Add national LC, resample to match 20m AEA grid used for supplementary analysis
+nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
+nlc <- resample(nlc, nmb, method = "near") # match extent 
+
+# Add vegetation data  
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")  
+# Clean up non veg names 
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE)   
+# rasterise the veg vector 
+veg_r <- rasterize(veg, nlc, "T_MAPCODE")  
+```
+
+## Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+
+```{r}
+# Analysis #Step 1-2.   # get LC  at 1990 time period 
+nmb_rall  <- as_tibble(crosstab(c(nlc, veg_r, nmb)))   
+write.csv(nmb_rall, file = "outputs/nmb_rall.csv")
+# Read in data to avoid spatial steps
+nmb_rall <- read.csv("C:/Rdata/LCC_terr/outputs/nmb_rall.csv")
+
+# clean up names and add km2
+nmb_rall  <- nmb_rall  %>%    
+  mutate(km2 = n*400/1000000) %>% # pixel size is 20m
+  rename(LC = nlc2022_7class) %>%
+  rename(NMB = nmb_lcdeg2)
+
+# Calculate extent of each vegtype within the specific AOI 
+nmb_list <- nmb_rall %>%
+  filter(NMB != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_nmb = sum(km2))
+
+options(scipen=999)
+
+nmb_sum <- nmb_rall %>%
+  filter(T_MAPCODE != "NOTVEG") %>%
+  mutate(LCcomb = case_when(
+                            NMB == 8 ~ "deg80",
+                            NMB == 4 ~ "notnat",
+                            LC == 1 ~ "nat",
+                            LC > 1~ "notnat", 
+                            TRUE ~ "unknown")) %>%
+  mutate(AOI = ifelse(NMB !=99, "nmb", "")) %>%
+  group_by(T_MAPCODE, LCcomb, ) %>%
+  summarise(km2tot = sum(km2)) %>%
+  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
+    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
+    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
+    mutate(D3 = case_when(prpdeg >= 0.9 ~ "CR",
+                   prpdeg >= 0.7 ~ "EN",
+                   prpdeg >= 0.5 ~ "VU",
+                  TRUE ~ "LC")) %>%
+  mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
+                   prplost >= 0.7 ~ "EN",
+                   prplost >= 0.5 ~ "VU",
+                  TRUE ~ "LC")) %>%
+  left_join(nmb_list, by = "T_MAPCODE") %>%
+   mutate(ext_nmb = ext_nmb/(nat + notnat + deg80))
+
+write.csv(nmb_sum, file = "outputs/nmb_sum.csv")
+  
+```

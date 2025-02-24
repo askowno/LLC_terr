@@ -1,0 +1,138 @@
+---
+bibliography: references.bib
+---
+
+---
+title: "Western Cape (2020), KwaZulu-Natal (2017)  & Mpumalanga (2017) Land Cover"
+format: html
+execute:
+  freeze: auto
+---
+
+### Load required packages
+
+```{r}
+#load packages   
+library(terra)  
+library(tidyverse) 
+library(sf) 
+library(PROJ) 
+```
+
+### Data sources & import:
+
+1.  Western Cape Provincial Land Cover (Cape Nature, 2022).
+
+2.  KwaZulu-Natal Provincial Land Cover (Ezemvelo KZN Wildlife, 2017).
+
+3.  Mpumalanga Provincial Land Cover (MPTA, 2017).
+
+4.  National Land Cover (7 class version prepared by SANBI) 2022.
+
+5.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+    ```{mermaid}
+    flowchart LR
+    A(Western Cape data) -- reclass and resample ARCPRO--> B(wc_lc2.tif)
+    C(KwaZulu-Natal data) --reclass and resample ARCPRO--> D(kzn_lc2.tif)
+    E(Mpumalanga data) --reclass and resample ARCPRO--> F(mpl_lc3.tif)
+    B --load to R terra--> L
+    D --load to R terra--> L
+    I[NLC 2022 DFFE]--reclass in ARCPRO--> J(nlc2022_7class.tif) --load to R terra--> K(Resample to 30m national grid)
+    K--> L(Cross tabulate)
+    M[National Vegetation Map 2024] --load and make raster --> L
+    L--> N(Summarise)
+    ```
+
+```{r}
+# Add WC, KZN and MPL LC data  (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 2 = old fields, 4 = lumped crop/built/mine/plantation/dams).
+ 
+wc <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/WC/wc_lc3.tif")
+kzn <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/kzn_lc2.tif")
+mpl <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/mpl_lc3.tif")
+
+# Add national LC, resample to match 20m AEA grid used for supplementary analysis
+
+nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
+nlc <- resample(nlc, wc, method = "near") # match extent 
+
+# Add vegetation data  
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")  
+# Clean up non veg names 
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE)   
+# rasterise the veg vector 
+veg_r <- rasterize(veg, nlc, "T_MAPCODE")  
+```
+
+## Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+
+```{r}
+# Analysis #Step 1-2.   # get LC  at 1990 time period 
+alt_rall  <- as_tibble(crosstab(c(nlc, veg_r, wc, mpl, kzn)))   
+write.csv(alt_rall, file = "outputs/alt_rall.csv")
+
+# Import cross tab output to avoid running spatial analysis 
+alt_rall <- read.csv("C:/Rdata/LCC_terr/outputs/alt_rall.csv")
+
+# clean up names and add km2
+alt_rall  <- alt_rall  %>%    
+  mutate(km2 = n*400/1000000) %>%   # pixel size is 40m
+  rename(LC = nlc2022_7class) %>%
+  rename(WC = wc_lc3) %>%
+  rename(KZN = kzn_lc2) %>%
+  rename(MPL = mpl_lc3) 
+
+# Calculate extent of each vegtype within the specific AOI 
+wc_list <- alt_rall %>%
+  filter(WC != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_wc = sum(km2))
+
+kzn_list <- alt_rall %>%
+  filter(KZN != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_kzn = sum(km2))
+  
+mpl_list <- alt_rall %>%
+  filter(MPL != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_mpl = sum(km2))
+
+# Summarise data and assess Criterion A3
+alt_sum <- alt_rall %>%
+  filter(T_MAPCODE != "NOTVEG") %>%
+  mutate(LCcomb = case_when(
+    MPL == 99 & WC == 99 & KZN == 99 & LC == 1 ~ "nat", 
+    MPL == 99 & WC == 99 & KZN == 99 & LC > 1 ~ "notnat", 
+    WC > 1 & WC < 99 ~ "notnat",
+    WC == 1 ~ "nat", 
+    KZN == 4 | KZN == 2 ~ "notnat", 
+    KZN == 0 ~ "nat", 
+    MPL == 4 ~ "notnat", 
+    MPL == 0 ~ "nat", 
+    TRUE ~ "unknown"  # Catch-all for unexpected values
+  )) %>% 
+  group_by(T_MAPCODE, LCcomb) %>%
+  summarise(km2tot = sum(km2)) %>%
+  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
+    mutate(prplost = notnat/(nat+notnat)) %>% # ext of remnants (A3)
+    mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
+                   prplost >= 0.7 ~ "EN",
+                   prplost >= 0.5 ~ "VU",
+                  TRUE ~ "LC")) %>% 
+   left_join(wc_list, by = "T_MAPCODE") %>%
+   left_join(kzn_list, by = "T_MAPCODE") %>%
+   left_join(mpl_list, by = "T_MAPCODE") %>%
+   mutate(ext_wc = ext_wc/(nat + notnat)) %>%
+   mutate(ext_kzn = ext_kzn/(nat + notnat)) %>%
+   mutate(ext_mpl = ext_mpl/(nat + notnat)) 
+
+write.csv(alt_sum, file = "outputs/alt_sum.csv")
+  
+```

@@ -173,7 +173,7 @@ sa_lc7_rall <- lc7_list %>%  bind_rows() %>%
   relocate(BIOME, .after = T_MAPCODE)%>%
   mutate(km2 = n*400/1000000)  #CHECK THIS# for test use 16000 for final use 400
   
-write.csv(sa_lc7_rall, file = "sa_lc7_rall.csv") 
+write.csv(sa_lc7_rall, file = "outputs/sa_lc7_rall.csv") 
 
 # This csv can be loaded to excel and using a pivot table summary stats for each type biome LC can be calculated 
 
@@ -185,7 +185,7 @@ Summarise LC7 for each BIOME, LC class etc. By importing sa_lc7_rall.csv to exce
 
 ```{r}
 # if required import data from spatial analysis above
-# sa_lc7_rall <- read_csv("sa_lc7_rall.csv", show_col_types = FALSE)
+# sa_lc7_rall <- read_csv("outputs/sa_lc7_rall.csv", show_col_types = FALSE)
 
 # summarise per Veg Type
 options(scipen = 999)
@@ -201,7 +201,7 @@ lc7_veg_2022_prop <- sa_lc7_rall %>%
   relocate(Natural, .after = T_MAPCODE)  %>%
   relocate(`Secondary-natural`, .after = Natural)
   
-write.csv(lc7_veg_2022_prop, file = "results_df_lc7_prop_veg_sa_only.csv")  
+write.csv(lc7_veg_2022_prop, file = "outputs/results_df_lc7_prop_veg_sa_only.csv")  
 
 # example of summary  per LC class  `
 crop_biome <- sa_lc7_rall %>%   
@@ -228,7 +228,7 @@ lc7_year_km2 <- sa_lc7_rall %>%
   summarise(total_km2 = sum(km2),.groups = 'drop') %>%
   pivot_wider(names_from = YEAR, values_from = total_km2) 
 
-write.csv(lc7_year_km2, file = "results_df_lc7_km2_year_sa_only.csv")
+write.csv(lc7_year_km2, file = "outputs/results_df_lc7_km2_year_sa_only.csv")
 
 lc7_year_prop <- sa_lc7_rall %>%   
   filter(YEAR != 1750) %>%
@@ -239,7 +239,7 @@ lc7_year_prop <- sa_lc7_rall %>%
   select(-total_km2) %>% #remove to make a neat pivot
   pivot_wider(names_from = YEAR, values_from = proportion) 
 
-write.csv(lc7_year_prop, file = "results_df_lc7_prop_year_sa_only.csv")
+write.csv(lc7_year_prop, file = "outputs/results_df_lc7_prop_year_sa_only.csv")
 
 test <- sa_lc7_rall %>%   
   filter(YEAR != 1750) %>%
@@ -292,7 +292,7 @@ plot <- ggplot(plot_data, aes(x = as.factor(YEAR), y = proportion, fill = (LC7_t
 
 #export the graph
 ggsave(
-  filename = "land_cover_biome_year_plot_sa_only.jpeg", # File name
+  filename = "outputs/land_cover_biome_year_plot_sa_only.jpeg", # File name
   plot = plot,                            # Plot object
   device = "jpeg",                        # File format
   width = 16, height = 12, units = "cm",   # Dimensions
@@ -342,7 +342,7 @@ plot2 <- ggplot(plot_data2, aes(x = as.factor(YEAR), y = total_km2, fill = (LC7_
 
 #export the graph
 ggsave(
-  filename = "land_cover_year_plot_sa_only.jpeg", # File name
+  filename = "outputs/land_cover_year_plot_sa_only.jpeg", # File name
   plot = plot2,                            # Plot object
   device = "jpeg",                        # File format
   width = 12, height = 8, units = "cm",   # Dimensions

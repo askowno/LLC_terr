@@ -3150,7 +3150,7 @@
 "3149","2",1990,"SKs5","Succulent Karoo",0,"Secondary-natural",0
 "3150","2",1990,"SKs6","Succulent Karoo",0,"Secondary-natural",0
 "3151","2",1990,"SKs7","Succulent Karoo",267017,"Secondary-natural",106.8068
-"3152","2",1990,"SKs8","Succulent Karoo",1,"Secondary-natural",0.0004
+"3152","2",1990,"SKs8","Succulent Karoo",1,"Secondary-natural",4e-04
 "3153","2",1990,"SKs9","Succulent Karoo",10798,"Secondary-natural",4.3192
 "3154","2",1990,"SKt1","Succulent Karoo",0,"Secondary-natural",0
 "3155","2",1990,"SKt2","Succulent Karoo",265186,"Secondary-natural",106.0744
@@ -3606,7 +3606,7 @@
 "3605","2",2014,"SKr9","Succulent Karoo",0,"Secondary-natural",0
 "3606","2",2014,"SKs1","Succulent Karoo",33251,"Secondary-natural",13.3004
 "3607","2",2014,"SKs10","Succulent Karoo",5065,"Secondary-natural",2.026
-"3608","2",2014,"SKs11","Succulent Karoo",1,"Secondary-natural",0.0004
+"3608","2",2014,"SKs11","Succulent Karoo",1,"Secondary-natural",4e-04
 "3609","2",2014,"SKs12","Succulent Karoo",66024,"Secondary-natural",26.4096
 "3610","2",2014,"SKs13","Succulent Karoo",17318,"Secondary-natural",6.9272
 "3611","2",2014,"SKs14","Succulent Karoo",73905,"Secondary-natural",29.562
@@ -3937,7 +3937,7 @@
 "3936","2",2018,"FRs9","Fynbos",1118274,"Secondary-natural",447.3096
 "3937","2",2018,"FS1","Fynbos",144357,"Secondary-natural",57.7428
 "3938","2",2018,"FS10","Fynbos",5098,"Secondary-natural",2.0392
-"3939","2",2018,"FS11","Fynbos",2,"Secondary-natural",0.0008
+"3939","2",2018,"FS11","Fynbos",2,"Secondary-natural",8e-04
 "3940","2",2018,"FS12","Fynbos",5778,"Secondary-natural",2.3112
 "3941","2",2018,"FS13","Fynbos",1209,"Secondary-natural",0.4836
 "3942","2",2018,"FS14","Fynbos",5891,"Secondary-natural",2.3564
@@ -4084,7 +4084,7 @@
 "4083","2",2018,"SKs7","Succulent Karoo",553061,"Secondary-natural",221.2244
 "4084","2",2018,"SKs8","Succulent Karoo",65940,"Secondary-natural",26.376
 "4085","2",2018,"SKs9","Succulent Karoo",42822,"Secondary-natural",17.1288
-"4086","2",2018,"SKt1","Succulent Karoo",2,"Secondary-natural",0.0008
+"4086","2",2018,"SKt1","Succulent Karoo",2,"Secondary-natural",8e-04
 "4087","2",2018,"SKt2","Succulent Karoo",366363,"Secondary-natural",146.5452
 "4088","2",2018,"SKt3","Succulent Karoo",165125,"Secondary-natural",66.05
 "4089","2",2018,"SKv1","Succulent Karoo",93389,"Secondary-natural",37.3556
@@ -5335,7 +5335,7 @@
 "5334","3",1990,"FRs9","Fynbos",75009,"Artificial-waterbody",30.0036
 "5335","3",1990,"FS1","Fynbos",247,"Artificial-waterbody",0.0988
 "5336","3",1990,"FS10","Fynbos",581,"Artificial-waterbody",0.2324
-"5337","3",1990,"FS11","Fynbos",2,"Artificial-waterbody",0.0008
+"5337","3",1990,"FS11","Fynbos",2,"Artificial-waterbody",8e-04
 "5338","3",1990,"FS12","Fynbos",178,"Artificial-waterbody",0.0712
 "5339","3",1990,"FS13","Fynbos",0,"Artificial-waterbody",0
 "5340","3",1990,"FS14","Fynbos",0,"Artificial-waterbody",0
@@ -5434,7 +5434,7 @@
 "5433","3",1990,"NKu4","Nama-Karoo",1187207,"Artificial-waterbody",474.8828
 "5434","3",1990,"NOTVEG","NOTVEG",3584,"Artificial-waterbody",1.4336
 "5435","3",1990,"SKk1","Succulent Karoo",539,"Artificial-waterbody",0.2156
-"5436","3",1990,"SKk2","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"5436","3",1990,"SKk2","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "5437","3",1990,"SKk3","Succulent Karoo",1891,"Artificial-waterbody",0.7564
 "5438","3",1990,"SKk4","Succulent Karoo",1037,"Artificial-waterbody",0.4148
 "5439","3",1990,"SKk5","Succulent Karoo",2846,"Artificial-waterbody",1.1384
@@ -5801,7 +5801,7 @@
 "5800","3",2014,"FRs9","Fynbos",85111,"Artificial-waterbody",34.0444
 "5801","3",2014,"FS1","Fynbos",355,"Artificial-waterbody",0.142
 "5802","3",2014,"FS10","Fynbos",581,"Artificial-waterbody",0.2324
-"5803","3",2014,"FS11","Fynbos",2,"Artificial-waterbody",0.0008
+"5803","3",2014,"FS11","Fynbos",2,"Artificial-waterbody",8e-04
 "5804","3",2014,"FS12","Fynbos",200,"Artificial-waterbody",0.08
 "5805","3",2014,"FS13","Fynbos",0,"Artificial-waterbody",0
 "5806","3",2014,"FS14","Fynbos",0,"Artificial-waterbody",0
@@ -5900,7 +5900,7 @@
 "5899","3",2014,"NKu4","Nama-Karoo",1201793,"Artificial-waterbody",480.7172
 "5900","3",2014,"NOTVEG","NOTVEG",5763,"Artificial-waterbody",2.3052
 "5901","3",2014,"SKk1","Succulent Karoo",551,"Artificial-waterbody",0.2204
-"5902","3",2014,"SKk2","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"5902","3",2014,"SKk2","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "5903","3",2014,"SKk3","Succulent Karoo",2042,"Artificial-waterbody",0.8168
 "5904","3",2014,"SKk4","Succulent Karoo",1234,"Artificial-waterbody",0.4936
 "5905","3",2014,"SKk5","Succulent Karoo",3462,"Artificial-waterbody",1.3848
@@ -6078,7 +6078,7 @@
 "6077","3",2018,"AT33","Albany Thicket",839,"Artificial-waterbody",0.3356
 "6078","3",2018,"AT34","Albany Thicket",280,"Artificial-waterbody",0.112
 "6079","3",2018,"AT35","Albany Thicket",3,"Artificial-waterbody",0.0012
-"6080","3",2018,"AT36","Albany Thicket",1,"Artificial-waterbody",0.0004
+"6080","3",2018,"AT36","Albany Thicket",1,"Artificial-waterbody",4e-04
 "6081","3",2018,"AT37","Albany Thicket",132,"Artificial-waterbody",0.0528
 "6082","3",2018,"AT38","Albany Thicket",2333,"Artificial-waterbody",0.9332
 "6083","3",2018,"AT39","Albany Thicket",78,"Artificial-waterbody",0.0312
@@ -6090,7 +6090,7 @@
 "6089","3",2018,"AT45","Albany Thicket",1360,"Artificial-waterbody",0.544
 "6090","3",2018,"AT46","Albany Thicket",607,"Artificial-waterbody",0.2428
 "6091","3",2018,"AT47","Albany Thicket",2150,"Artificial-waterbody",0.86
-"6092","3",2018,"AT48","Albany Thicket",2,"Artificial-waterbody",0.0008
+"6092","3",2018,"AT48","Albany Thicket",2,"Artificial-waterbody",8e-04
 "6093","3",2018,"AT49","Albany Thicket",49909,"Artificial-waterbody",19.9636
 "6094","3",2018,"AT50","Albany Thicket",1645,"Artificial-waterbody",0.658
 "6095","3",2018,"AT51","Albany Thicket",7015,"Artificial-waterbody",2.806
@@ -6182,7 +6182,7 @@
 "6181","3",2018,"FFh9","Fynbos",6455,"Artificial-waterbody",2.582
 "6182","3",2018,"FFl1","Fynbos",149,"Artificial-waterbody",0.0596
 "6183","3",2018,"FFl2","Fynbos",175,"Artificial-waterbody",0.07
-"6184","3",2018,"FFl3","Fynbos",1,"Artificial-waterbody",0.0004
+"6184","3",2018,"FFl3","Fynbos",1,"Artificial-waterbody",4e-04
 "6185","3",2018,"FFq1","Fynbos",0,"Artificial-waterbody",0
 "6186","3",2018,"FFq2","Fynbos",709,"Artificial-waterbody",0.2836
 "6187","3",2018,"FFq3","Fynbos",347,"Artificial-waterbody",0.1388
@@ -6267,7 +6267,7 @@
 "6266","3",2018,"FRs9","Fynbos",42384,"Artificial-waterbody",16.9536
 "6267","3",2018,"FS1","Fynbos",83,"Artificial-waterbody",0.0332
 "6268","3",2018,"FS10","Fynbos",52,"Artificial-waterbody",0.0208
-"6269","3",2018,"FS11","Fynbos",1,"Artificial-waterbody",0.0004
+"6269","3",2018,"FS11","Fynbos",1,"Artificial-waterbody",4e-04
 "6270","3",2018,"FS12","Fynbos",42,"Artificial-waterbody",0.0168
 "6271","3",2018,"FS13","Fynbos",14,"Artificial-waterbody",0.0056
 "6272","3",2018,"FS14","Fynbos",42,"Artificial-waterbody",0.0168
@@ -6319,7 +6319,7 @@
 "6318","3",2018,"Gm23","Grassland",340,"Artificial-waterbody",0.136
 "6319","3",2018,"Gm24","Grassland",0,"Artificial-waterbody",0
 "6320","3",2018,"Gm25","Grassland",11249,"Artificial-waterbody",4.4996
-"6321","3",2018,"Gm26","Grassland",1,"Artificial-waterbody",0.0004
+"6321","3",2018,"Gm26","Grassland",1,"Artificial-waterbody",4e-04
 "6322","3",2018,"Gm27","Grassland",0,"Artificial-waterbody",0
 "6323","3",2018,"Gm28","Grassland",0,"Artificial-waterbody",0
 "6324","3",2018,"Gm29","Grassland",485,"Artificial-waterbody",0.194
@@ -6394,10 +6394,10 @@
 "6393","3",2018,"SKr19","Succulent Karoo",750,"Artificial-waterbody",0.3
 "6394","3",2018,"SKr2","Succulent Karoo",0,"Artificial-waterbody",0
 "6395","3",2018,"SKr3","Succulent Karoo",7,"Artificial-waterbody",0.0028
-"6396","3",2018,"SKr4","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"6396","3",2018,"SKr4","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "6397","3",2018,"SKr5","Succulent Karoo",0,"Artificial-waterbody",0
 "6398","3",2018,"SKr6","Succulent Karoo",0,"Artificial-waterbody",0
-"6399","3",2018,"SKr7","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"6399","3",2018,"SKr7","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "6400","3",2018,"SKr8","Succulent Karoo",60,"Artificial-waterbody",0.024
 "6401","3",2018,"SKr9","Succulent Karoo",0,"Artificial-waterbody",0
 "6402","3",2018,"SKs1","Succulent Karoo",810,"Artificial-waterbody",0.324
@@ -6544,7 +6544,7 @@
 "6543","3",2020,"AT33","Albany Thicket",1549,"Artificial-waterbody",0.6196
 "6544","3",2020,"AT34","Albany Thicket",284,"Artificial-waterbody",0.1136
 "6545","3",2020,"AT35","Albany Thicket",0,"Artificial-waterbody",0
-"6546","3",2020,"AT36","Albany Thicket",1,"Artificial-waterbody",0.0004
+"6546","3",2020,"AT36","Albany Thicket",1,"Artificial-waterbody",4e-04
 "6547","3",2020,"AT37","Albany Thicket",100,"Artificial-waterbody",0.04
 "6548","3",2020,"AT38","Albany Thicket",1449,"Artificial-waterbody",0.5796
 "6549","3",2020,"AT39","Albany Thicket",21,"Artificial-waterbody",0.0084
@@ -6556,7 +6556,7 @@
 "6555","3",2020,"AT45","Albany Thicket",686,"Artificial-waterbody",0.2744
 "6556","3",2020,"AT46","Albany Thicket",2616,"Artificial-waterbody",1.0464
 "6557","3",2020,"AT47","Albany Thicket",1634,"Artificial-waterbody",0.6536
-"6558","3",2020,"AT48","Albany Thicket",2,"Artificial-waterbody",0.0008
+"6558","3",2020,"AT48","Albany Thicket",2,"Artificial-waterbody",8e-04
 "6559","3",2020,"AT49","Albany Thicket",50723,"Artificial-waterbody",20.2892
 "6560","3",2020,"AT50","Albany Thicket",1539,"Artificial-waterbody",0.6156
 "6561","3",2020,"AT51","Albany Thicket",6145,"Artificial-waterbody",2.458
@@ -6594,7 +6594,7 @@
 "6593","3",2020,"Dg1","Desert",47,"Artificial-waterbody",0.0188
 "6594","3",2020,"Dg10","Desert",381,"Artificial-waterbody",0.1524
 "6595","3",2020,"Dg2","Desert",71,"Artificial-waterbody",0.0284
-"6596","3",2020,"Dg3","Desert",2,"Artificial-waterbody",0.0008
+"6596","3",2020,"Dg3","Desert",2,"Artificial-waterbody",8e-04
 "6597","3",2020,"Dg4","Desert",168,"Artificial-waterbody",0.0672
 "6598","3",2020,"Dg5","Desert",312,"Artificial-waterbody",0.1248
 "6599","3",2020,"Dg6","Desert",0,"Artificial-waterbody",0
@@ -6720,7 +6720,7 @@
 "6719","3",2020,"FRs15","Fynbos",357,"Artificial-waterbody",0.1428
 "6720","3",2020,"FRs16","Fynbos",1714,"Artificial-waterbody",0.6856
 "6721","3",2020,"FRs17","Fynbos",6152,"Artificial-waterbody",2.4608
-"6722","3",2020,"FRs18","Fynbos",1,"Artificial-waterbody",0.0004
+"6722","3",2020,"FRs18","Fynbos",1,"Artificial-waterbody",4e-04
 "6723","3",2020,"FRs19","Fynbos",6327,"Artificial-waterbody",2.5308
 "6724","3",2020,"FRs2","Fynbos",265,"Artificial-waterbody",0.106
 "6725","3",2020,"FRs20","Fynbos",3331,"Artificial-waterbody",1.3324
@@ -6779,15 +6779,15 @@
 "6778","3",2020,"Gm17","Grassland",1645,"Artificial-waterbody",0.658
 "6779","3",2020,"Gm19","Grassland",6817,"Artificial-waterbody",2.7268
 "6780","3",2020,"Gm2","Grassland",2428,"Artificial-waterbody",0.9712
-"6781","3",2020,"Gm20","Grassland",2,"Artificial-waterbody",0.0008
+"6781","3",2020,"Gm20","Grassland",2,"Artificial-waterbody",8e-04
 "6782","3",2020,"Gm21","Grassland",27747,"Artificial-waterbody",11.0988
 "6783","3",2020,"Gm22","Grassland",608,"Artificial-waterbody",0.2432
 "6784","3",2020,"Gm23","Grassland",346,"Artificial-waterbody",0.1384
 "6785","3",2020,"Gm24","Grassland",0,"Artificial-waterbody",0
 "6786","3",2020,"Gm25","Grassland",6840,"Artificial-waterbody",2.736
 "6787","3",2020,"Gm26","Grassland",0,"Artificial-waterbody",0
-"6788","3",2020,"Gm27","Grassland",1,"Artificial-waterbody",0.0004
-"6789","3",2020,"Gm28","Grassland",1,"Artificial-waterbody",0.0004
+"6788","3",2020,"Gm27","Grassland",1,"Artificial-waterbody",4e-04
+"6789","3",2020,"Gm28","Grassland",1,"Artificial-waterbody",4e-04
 "6790","3",2020,"Gm29","Grassland",555,"Artificial-waterbody",0.222
 "6791","3",2020,"Gm3","Grassland",151008,"Artificial-waterbody",60.4032
 "6792","3",2020,"Gm30","Grassland",26166,"Artificial-waterbody",10.4664
@@ -6838,7 +6838,7 @@
 "6837","3",2020,"SKk5","Succulent Karoo",1543,"Artificial-waterbody",0.6172
 "6838","3",2020,"SKk6","Succulent Karoo",56,"Artificial-waterbody",0.0224
 "6839","3",2020,"SKk7","Succulent Karoo",28181,"Artificial-waterbody",11.2724
-"6840","3",2020,"SKk8","Succulent Karoo",2,"Artificial-waterbody",0.0008
+"6840","3",2020,"SKk8","Succulent Karoo",2,"Artificial-waterbody",8e-04
 "6841","3",2020,"SKk9","Succulent Karoo",283,"Artificial-waterbody",0.1132
 "6842","3",2020,"SKn1","Succulent Karoo",585,"Artificial-waterbody",0.234
 "6843","3",2020,"SKn2","Succulent Karoo",182,"Artificial-waterbody",0.0728
@@ -6863,7 +6863,7 @@
 "6862","3",2020,"SKr4","Succulent Karoo",0,"Artificial-waterbody",0
 "6863","3",2020,"SKr5","Succulent Karoo",0,"Artificial-waterbody",0
 "6864","3",2020,"SKr6","Succulent Karoo",95,"Artificial-waterbody",0.038
-"6865","3",2020,"SKr7","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"6865","3",2020,"SKr7","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "6866","3",2020,"SKr8","Succulent Karoo",95,"Artificial-waterbody",0.038
 "6867","3",2020,"SKr9","Succulent Karoo",0,"Artificial-waterbody",0
 "6868","3",2020,"SKs1","Succulent Karoo",715,"Artificial-waterbody",0.286
@@ -6964,7 +6964,7 @@
 "6963","3",2020,"SVl23","Savanna",25978,"Artificial-waterbody",10.3912
 "6964","3",2020,"SVl24","Savanna",2816,"Artificial-waterbody",1.1264
 "6965","3",2020,"SVl25","Savanna",165,"Artificial-waterbody",0.066
-"6966","3",2020,"SVl26","Savanna",2,"Artificial-waterbody",0.0008
+"6966","3",2020,"SVl26","Savanna",2,"Artificial-waterbody",8e-04
 "6967","3",2020,"SVl27","Savanna",413,"Artificial-waterbody",0.1652
 "6968","3",2020,"SVl3","Savanna",134004,"Artificial-waterbody",53.6016
 "6969","3",2020,"SVl4","Savanna",6922,"Artificial-waterbody",2.7688
@@ -7033,7 +7033,7 @@
 "7032","3",2022,"AT56","Albany Thicket",1350,"Artificial-waterbody",0.54
 "7033","3",2022,"AT57","Albany Thicket",6203,"Artificial-waterbody",2.4812
 "7034","3",2022,"AT58","Albany Thicket",6424,"Artificial-waterbody",2.5696
-"7035","3",2022,"AZa1","Azonal",2,"Artificial-waterbody",0.0008
+"7035","3",2022,"AZa1","Azonal",2,"Artificial-waterbody",8e-04
 "7036","3",2022,"AZa2","Azonal",3161,"Artificial-waterbody",1.2644
 "7037","3",2022,"AZa3","Azonal",41607,"Artificial-waterbody",16.6428
 "7038","3",2022,"AZa4","Azonal",18269,"Artificial-waterbody",7.3076
@@ -7060,7 +7060,7 @@
 "7059","3",2022,"Dg1","Desert",33,"Artificial-waterbody",0.0132
 "7060","3",2022,"Dg10","Desert",174,"Artificial-waterbody",0.0696
 "7061","3",2022,"Dg2","Desert",48,"Artificial-waterbody",0.0192
-"7062","3",2022,"Dg3","Desert",1,"Artificial-waterbody",0.0004
+"7062","3",2022,"Dg3","Desert",1,"Artificial-waterbody",4e-04
 "7063","3",2022,"Dg4","Desert",183,"Artificial-waterbody",0.0732
 "7064","3",2022,"Dg5","Desert",237,"Artificial-waterbody",0.0948
 "7065","3",2022,"Dg6","Desert",0,"Artificial-waterbody",0
@@ -7083,7 +7083,7 @@
 "7082","3",2022,"FFb5","Fynbos",293,"Artificial-waterbody",0.1172
 "7083","3",2022,"FFb6","Fynbos",1566,"Artificial-waterbody",0.6264
 "7084","3",2022,"FFc1","Fynbos",3822,"Artificial-waterbody",1.5288
-"7085","3",2022,"FFd1","Fynbos",1,"Artificial-waterbody",0.0004
+"7085","3",2022,"FFd1","Fynbos",1,"Artificial-waterbody",4e-04
 "7086","3",2022,"FFd10","Fynbos",315,"Artificial-waterbody",0.126
 "7087","3",2022,"FFd11","Fynbos",167,"Artificial-waterbody",0.0668
 "7088","3",2022,"FFd2","Fynbos",3583,"Artificial-waterbody",1.4332
@@ -7145,7 +7145,7 @@
 "7144","3",2022,"FFs29","Fynbos",362,"Artificial-waterbody",0.1448
 "7145","3",2022,"FFs3","Fynbos",192,"Artificial-waterbody",0.0768
 "7146","3",2022,"FFs30","Fynbos",13,"Artificial-waterbody",0.0052
-"7147","3",2022,"FFs31","Fynbos",1,"Artificial-waterbody",0.0004
+"7147","3",2022,"FFs31","Fynbos",1,"Artificial-waterbody",4e-04
 "7148","3",2022,"FFs32","Fynbos",75,"Artificial-waterbody",0.03
 "7149","3",2022,"FFs4","Fynbos",7116,"Artificial-waterbody",2.8464
 "7150","3",2022,"FFs5","Fynbos",11900,"Artificial-waterbody",4.76
@@ -7186,7 +7186,7 @@
 "7185","3",2022,"FRs15","Fynbos",544,"Artificial-waterbody",0.2176
 "7186","3",2022,"FRs16","Fynbos",3355,"Artificial-waterbody",1.342
 "7187","3",2022,"FRs17","Fynbos",6047,"Artificial-waterbody",2.4188
-"7188","3",2022,"FRs18","Fynbos",1,"Artificial-waterbody",0.0004
+"7188","3",2022,"FRs18","Fynbos",1,"Artificial-waterbody",4e-04
 "7189","3",2022,"FRs19","Fynbos",5710,"Artificial-waterbody",2.284
 "7190","3",2022,"FRs2","Fynbos",133,"Artificial-waterbody",0.0532
 "7191","3",2022,"FRs20","Fynbos",3402,"Artificial-waterbody",1.3608
@@ -7216,7 +7216,7 @@
 "7215","3",2022,"Gd3","Grassland",43435,"Artificial-waterbody",17.374
 "7216","3",2022,"Gd4","Grassland",10180,"Artificial-waterbody",4.072
 "7217","3",2022,"Gd5","Grassland",9167,"Artificial-waterbody",3.6668
-"7218","3",2022,"Gd6","Grassland",1,"Artificial-waterbody",0.0004
+"7218","3",2022,"Gd6","Grassland",1,"Artificial-waterbody",4e-04
 "7219","3",2022,"Gd7","Grassland",629,"Artificial-waterbody",0.2516
 "7220","3",2022,"Gd8","Grassland",1844,"Artificial-waterbody",0.7376
 "7221","3",2022,"Gh1","Grassland",34716,"Artificial-waterbody",13.8864
@@ -7316,7 +7316,7 @@
 "7315","3",2022,"SKr1","Succulent Karoo",55,"Artificial-waterbody",0.022
 "7316","3",2022,"SKr10","Succulent Karoo",0,"Artificial-waterbody",0
 "7317","3",2022,"SKr11","Succulent Karoo",0,"Artificial-waterbody",0
-"7318","3",2022,"SKr12","Succulent Karoo",2,"Artificial-waterbody",0.0008
+"7318","3",2022,"SKr12","Succulent Karoo",2,"Artificial-waterbody",8e-04
 "7319","3",2022,"SKr13","Succulent Karoo",6,"Artificial-waterbody",0.0024
 "7320","3",2022,"SKr14","Succulent Karoo",0,"Artificial-waterbody",0
 "7321","3",2022,"SKr15","Succulent Karoo",0,"Artificial-waterbody",0
@@ -7329,7 +7329,7 @@
 "7328","3",2022,"SKr4","Succulent Karoo",0,"Artificial-waterbody",0
 "7329","3",2022,"SKr5","Succulent Karoo",0,"Artificial-waterbody",0
 "7330","3",2022,"SKr6","Succulent Karoo",0,"Artificial-waterbody",0
-"7331","3",2022,"SKr7","Succulent Karoo",1,"Artificial-waterbody",0.0004
+"7331","3",2022,"SKr7","Succulent Karoo",1,"Artificial-waterbody",4e-04
 "7332","3",2022,"SKr8","Succulent Karoo",67,"Artificial-waterbody",0.0268
 "7333","3",2022,"SKr9","Succulent Karoo",0,"Artificial-waterbody",0
 "7334","3",2022,"SKs1","Succulent Karoo",495,"Artificial-waterbody",0.198
@@ -7410,7 +7410,7 @@
 "7409","3",2022,"SVk9","Savanna",3284,"Artificial-waterbody",1.3136
 "7410","3",2022,"SVkd1","Savanna",4854,"Artificial-waterbody",1.9416
 "7411","3",2022,"SVkd2","Savanna",40,"Artificial-waterbody",0.016
-"7412","3",2022,"SVkd3","Savanna",2,"Artificial-waterbody",0.0008
+"7412","3",2022,"SVkd3","Savanna",2,"Artificial-waterbody",8e-04
 "7413","3",2022,"SVkd4","Savanna",0,"Artificial-waterbody",0
 "7414","3",2022,"SVl1","Savanna",7337,"Artificial-waterbody",2.9348
 "7415","3",2022,"SVl10","Savanna",2713,"Artificial-waterbody",1.0852
@@ -7568,7 +7568,7 @@
 "7567","4",1990,"FFg4","Fynbos",0,"Built-up",0
 "7568","4",1990,"FFg5","Fynbos",64670,"Built-up",25.868
 "7569","4",1990,"FFh1","Fynbos",947,"Built-up",0.3788
-"7570","4",1990,"FFh10","Fynbos",1,"Built-up",0.0004
+"7570","4",1990,"FFh10","Fynbos",1,"Built-up",4e-04
 "7571","4",1990,"FFh11","Fynbos",12182,"Built-up",4.8728
 "7572","4",1990,"FFh2","Fynbos",0,"Built-up",0
 "7573","4",1990,"FFh3","Fynbos",0,"Built-up",0
@@ -7973,7 +7973,7 @@
 "7972","4",2014,"AZa6","Azonal",74796,"Built-up",29.9184
 "7973","4",2014,"AZa7","Azonal",30791,"Built-up",12.3164
 "7974","4",2014,"AZd1","Azonal",0,"Built-up",0
-"7975","4",2014,"AZd2","Azonal",1,"Built-up",0.0004
+"7975","4",2014,"AZd2","Azonal",1,"Built-up",4e-04
 "7976","4",2014,"AZd3","Azonal",4274,"Built-up",1.7096
 "7977","4",2014,"AZd4","Azonal",1745,"Built-up",0.698
 "7978","4",2014,"AZi1","Azonal",1391,"Built-up",0.5564
@@ -8614,7 +8614,7 @@
 "8613","4",2018,"Gd3","Grassland",40990,"Built-up",16.396
 "8614","4",2018,"Gd4","Grassland",159149,"Built-up",63.6596
 "8615","4",2018,"Gd5","Grassland",118587,"Built-up",47.4348
-"8616","4",2018,"Gd6","Grassland",1,"Built-up",0.0004
+"8616","4",2018,"Gd6","Grassland",1,"Built-up",4e-04
 "8617","4",2018,"Gd7","Grassland",316,"Built-up",0.1264
 "8618","4",2018,"Gd8","Grassland",6787,"Built-up",2.7148
 "8619","4",2018,"Gh1","Grassland",47162,"Built-up",18.8648
@@ -9080,7 +9080,7 @@
 "9079","4",2020,"Gd3","Grassland",39041,"Built-up",15.6164
 "9080","4",2020,"Gd4","Grassland",157605,"Built-up",63.042
 "9081","4",2020,"Gd5","Grassland",120319,"Built-up",48.1276
-"9082","4",2020,"Gd6","Grassland",1,"Built-up",0.0004
+"9082","4",2020,"Gd6","Grassland",1,"Built-up",4e-04
 "9083","4",2020,"Gd7","Grassland",305,"Built-up",0.122
 "9084","4",2020,"Gd8","Grassland",6300,"Built-up",2.52
 "9085","4",2020,"Gh1","Grassland",45981,"Built-up",18.3924
@@ -9192,7 +9192,7 @@
 "9191","4",2020,"SKr3","Succulent Karoo",6,"Built-up",0.0024
 "9192","4",2020,"SKr4","Succulent Karoo",2032,"Built-up",0.8128
 "9193","4",2020,"SKr5","Succulent Karoo",0,"Built-up",0
-"9194","4",2020,"SKr6","Succulent Karoo",1,"Built-up",0.0004
+"9194","4",2020,"SKr6","Succulent Karoo",1,"Built-up",4e-04
 "9195","4",2020,"SKr7","Succulent Karoo",1000,"Built-up",0.4
 "9196","4",2020,"SKr8","Succulent Karoo",0,"Built-up",0
 "9197","4",2020,"SKr9","Succulent Karoo",0,"Built-up",0
@@ -9496,7 +9496,7 @@
 "9495","4",2022,"FOz6","Forest",463,"Built-up",0.1852
 "9496","4",2022,"FOz7","Forest",52471,"Built-up",20.9884
 "9497","4",2022,"FOz8","Forest",5907,"Built-up",2.3628
-"9498","4",2022,"FOz9","Forest",1,"Built-up",0.0004
+"9498","4",2022,"FOz9","Forest",1,"Built-up",4e-04
 "9499","4",2022,"FRa1","Fynbos",74297,"Built-up",29.7188
 "9500","4",2022,"FRa2","Fynbos",3852,"Built-up",1.5408
 "9501","4",2022,"FRc1","Fynbos",5989,"Built-up",2.3956
@@ -9546,7 +9546,7 @@
 "9545","4",2022,"Gd3","Grassland",38140,"Built-up",15.256
 "9546","4",2022,"Gd4","Grassland",155825,"Built-up",62.33
 "9547","4",2022,"Gd5","Grassland",120578,"Built-up",48.2312
-"9548","4",2022,"Gd6","Grassland",1,"Built-up",0.0004
+"9548","4",2022,"Gd6","Grassland",1,"Built-up",4e-04
 "9549","4",2022,"Gd7","Grassland",305,"Built-up",0.122
 "9550","4",2022,"Gd8","Grassland",5921,"Built-up",2.3684
 "9551","4",2022,"Gh1","Grassland",43025,"Built-up",17.21
@@ -9846,7 +9846,7 @@
 "9845","5",1990,"AZi6","Azonal",1038053,"Cropland",415.2212
 "9846","5",1990,"AZi7","Azonal",164645,"Cropland",65.858
 "9847","5",1990,"AZi8","Azonal",519633,"Cropland",207.8532
-"9848","5",1990,"AZs3","Azonal",1,"Cropland",0.0004
+"9848","5",1990,"AZs3","Azonal",1,"Cropland",4e-04
 "9849","5",1990,"CB1","IOCB",474949,"Cropland",189.9796
 "9850","5",1990,"CB2","IOCB",2283,"Cropland",0.9132
 "9851","5",1990,"CB3","IOCB",3524818,"Cropland",1409.9272
@@ -9996,7 +9996,7 @@
 "9995","5",1990,"FS1","Fynbos",111295,"Cropland",44.518
 "9996","5",1990,"FS10","Fynbos",102,"Cropland",0.0408
 "9997","5",1990,"FS11","Fynbos",0,"Cropland",0
-"9998","5",1990,"FS12","Fynbos",1,"Cropland",0.0004
+"9998","5",1990,"FS12","Fynbos",1,"Cropland",4e-04
 "9999","5",1990,"FS13","Fynbos",14,"Cropland",0.0056
 "10000","5",1990,"FS14","Fynbos",1319,"Cropland",0.5276
 "10001","5",1990,"FS2","Fynbos",420685,"Cropland",168.274
@@ -10013,7 +10013,7 @@
 "10012","5",1990,"Gd4","Grassland",844477,"Cropland",337.7908
 "10013","5",1990,"Gd5","Grassland",57769,"Cropland",23.1076
 "10014","5",1990,"Gd6","Grassland",0,"Cropland",0
-"10015","5",1990,"Gd7","Grassland",1,"Cropland",0.0004
+"10015","5",1990,"Gd7","Grassland",1,"Cropland",4e-04
 "10016","5",1990,"Gd8","Grassland",79829,"Cropland",31.9316
 "10017","5",1990,"Gh1","Grassland",229681,"Cropland",91.8724
 "10018","5",1990,"Gh10","Grassland",43732075,"Cropland",17492.83
@@ -10478,7 +10478,7 @@
 "10477","5",2014,"Gd3","Grassland",834282,"Cropland",333.7128
 "10478","5",2014,"Gd4","Grassland",863488,"Cropland",345.3952
 "10479","5",2014,"Gd5","Grassland",62585,"Cropland",25.034
-"10480","5",2014,"Gd6","Grassland",2,"Cropland",0.0008
+"10480","5",2014,"Gd6","Grassland",2,"Cropland",8e-04
 "10481","5",2014,"Gd7","Grassland",370,"Cropland",0.148
 "10482","5",2014,"Gd8","Grassland",77631,"Cropland",31.0524
 "10483","5",2014,"Gh1","Grassland",251706,"Cropland",100.6824
@@ -10778,7 +10778,7 @@
 "10777","5",2018,"AZi6","Azonal",1046959,"Cropland",418.7836
 "10778","5",2018,"AZi7","Azonal",107537,"Cropland",43.0148
 "10779","5",2018,"AZi8","Azonal",517413,"Cropland",206.9652
-"10780","5",2018,"AZs3","Azonal",2,"Cropland",0.0008
+"10780","5",2018,"AZs3","Azonal",2,"Cropland",8e-04
 "10781","5",2018,"CB1","IOCB",486587,"Cropland",194.6348
 "10782","5",2018,"CB2","IOCB",26904,"Cropland",10.7616
 "10783","5",2018,"CB3","IOCB",3669616,"Cropland",1467.8464
@@ -10929,7 +10929,7 @@
 "10928","5",2018,"FS10","Fynbos",258,"Cropland",0.1032
 "10929","5",2018,"FS11","Fynbos",6,"Cropland",0.0024
 "10930","5",2018,"FS12","Fynbos",0,"Cropland",0
-"10931","5",2018,"FS13","Fynbos",2,"Cropland",0.0008
+"10931","5",2018,"FS13","Fynbos",2,"Cropland",8e-04
 "10932","5",2018,"FS14","Fynbos",1367,"Cropland",0.5468
 "10933","5",2018,"FS2","Fynbos",401061,"Cropland",160.4244
 "10934","5",2018,"FS3","Fynbos",1755341,"Cropland",702.1364
@@ -11244,7 +11244,7 @@
 "11243","5",2020,"AZi6","Azonal",1072459,"Cropland",428.9836
 "11244","5",2020,"AZi7","Azonal",108190,"Cropland",43.276
 "11245","5",2020,"AZi8","Azonal",525554,"Cropland",210.2216
-"11246","5",2020,"AZs3","Azonal",2,"Cropland",0.0008
+"11246","5",2020,"AZs3","Azonal",2,"Cropland",8e-04
 "11247","5",2020,"CB1","IOCB",493685,"Cropland",197.474
 "11248","5",2020,"CB2","IOCB",27295,"Cropland",10.918
 "11249","5",2020,"CB3","IOCB",3671581,"Cropland",1468.6324
@@ -11395,7 +11395,7 @@
 "11394","5",2020,"FS10","Fynbos",262,"Cropland",0.1048
 "11395","5",2020,"FS11","Fynbos",7,"Cropland",0.0028
 "11396","5",2020,"FS12","Fynbos",0,"Cropland",0
-"11397","5",2020,"FS13","Fynbos",2,"Cropland",0.0008
+"11397","5",2020,"FS13","Fynbos",2,"Cropland",8e-04
 "11398","5",2020,"FS14","Fynbos",1405,"Cropland",0.562
 "11399","5",2020,"FS2","Fynbos",404339,"Cropland",161.7356
 "11400","5",2020,"FS3","Fynbos",1769573,"Cropland",707.8292
@@ -11710,7 +11710,7 @@
 "11709","5",2022,"AZi6","Azonal",1074802,"Cropland",429.9208
 "11710","5",2022,"AZi7","Azonal",107505,"Cropland",43.002
 "11711","5",2022,"AZi8","Azonal",525366,"Cropland",210.1464
-"11712","5",2022,"AZs3","Azonal",2,"Cropland",0.0008
+"11712","5",2022,"AZs3","Azonal",2,"Cropland",8e-04
 "11713","5",2022,"CB1","IOCB",494907,"Cropland",197.9628
 "11714","5",2022,"CB2","IOCB",27295,"Cropland",10.918
 "11715","5",2022,"CB3","IOCB",3667757,"Cropland",1467.1028
@@ -11861,7 +11861,7 @@
 "11860","5",2022,"FS10","Fynbos",262,"Cropland",0.1048
 "11861","5",2022,"FS11","Fynbos",7,"Cropland",0.0028
 "11862","5",2022,"FS12","Fynbos",0,"Cropland",0
-"11863","5",2022,"FS13","Fynbos",2,"Cropland",0.0008
+"11863","5",2022,"FS13","Fynbos",2,"Cropland",8e-04
 "11864","5",2022,"FS14","Fynbos",1393,"Cropland",0.5572
 "11865","5",2022,"FS2","Fynbos",404428,"Cropland",161.7712
 "11866","5",2022,"FS3","Fynbos",1772749,"Cropland",709.0996
@@ -12148,12 +12148,12 @@
 "12147","6",1990,"AT45","Albany Thicket",1055,"Mine",0.422
 "12148","6",1990,"AT46","Albany Thicket",196,"Mine",0.0784
 "12149","6",1990,"AT47","Albany Thicket",1016,"Mine",0.4064
-"12150","6",1990,"AT48","Albany Thicket",1,"Mine",0.0004
+"12150","6",1990,"AT48","Albany Thicket",1,"Mine",4e-04
 "12151","6",1990,"AT49","Albany Thicket",1172,"Mine",0.4688
 "12152","6",1990,"AT50","Albany Thicket",801,"Mine",0.3204
 "12153","6",1990,"AT51","Albany Thicket",13340,"Mine",5.336
 "12154","6",1990,"AT52","Albany Thicket",0,"Mine",0
-"12155","6",1990,"AT53","Albany Thicket",2,"Mine",0.0008
+"12155","6",1990,"AT53","Albany Thicket",2,"Mine",8e-04
 "12156","6",1990,"AT54","Albany Thicket",27,"Mine",0.0108
 "12157","6",1990,"AT55","Albany Thicket",204,"Mine",0.0816
 "12158","6",1990,"AT56","Albany Thicket",1781,"Mine",0.7124
@@ -12229,7 +12229,7 @@
 "12228","6",1990,"FFg5","Fynbos",1264,"Mine",0.5056
 "12229","6",1990,"FFh1","Fynbos",99,"Mine",0.0396
 "12230","6",1990,"FFh10","Fynbos",0,"Mine",0
-"12231","6",1990,"FFh11","Fynbos",2,"Mine",0.0008
+"12231","6",1990,"FFh11","Fynbos",2,"Mine",8e-04
 "12232","6",1990,"FFh2","Fynbos",11,"Mine",0.0044
 "12233","6",1990,"FFh3","Fynbos",54,"Mine",0.0216
 "12234","6",1990,"FFh4","Fynbos",38,"Mine",0.0152
@@ -12375,7 +12375,7 @@
 "12374","6",1990,"Gm21","Grassland",6141,"Mine",2.4564
 "12375","6",1990,"Gm22","Grassland",724,"Mine",0.2896
 "12376","6",1990,"Gm23","Grassland",491,"Mine",0.1964
-"12377","6",1990,"Gm24","Grassland",1,"Mine",0.0004
+"12377","6",1990,"Gm24","Grassland",1,"Mine",4e-04
 "12378","6",1990,"Gm25","Grassland",13,"Mine",0.0052
 "12379","6",1990,"Gm26","Grassland",27,"Mine",0.0108
 "12380","6",1990,"Gm27","Grassland",383,"Mine",0.1532
@@ -12752,7 +12752,7 @@
 "12751","6",2014,"FOa3","Forest",9,"Mine",0.0036
 "12752","6",2014,"FOz1","Forest",60,"Mine",0.024
 "12753","6",2014,"FOz2","Forest",18,"Mine",0.0072
-"12754","6",2014,"FOz3","Forest",1,"Mine",0.0004
+"12754","6",2014,"FOz3","Forest",1,"Mine",4e-04
 "12755","6",2014,"FOz4","Forest",0,"Mine",0
 "12756","6",2014,"FOz5","Forest",118,"Mine",0.0472
 "12757","6",2014,"FOz6","Forest",0,"Mine",0
@@ -12804,7 +12804,7 @@
 "12803","6",2014,"FS9","Fynbos",0,"Mine",0
 "12804","6",2014,"Gd1","Grassland",508,"Mine",0.2032
 "12805","6",2014,"Gd10","Grassland",0,"Mine",0
-"12806","6",2014,"Gd2","Grassland",1,"Mine",0.0004
+"12806","6",2014,"Gd2","Grassland",1,"Mine",4e-04
 "12807","6",2014,"Gd3","Grassland",1378,"Mine",0.5512
 "12808","6",2014,"Gd4","Grassland",739,"Mine",0.2956
 "12809","6",2014,"Gd5","Grassland",183,"Mine",0.0732
@@ -13161,7 +13161,7 @@
 "13160","6",2018,"FFg5","Fynbos",1585,"Mine",0.634
 "13161","6",2018,"FFh1","Fynbos",72,"Mine",0.0288
 "13162","6",2018,"FFh10","Fynbos",0,"Mine",0
-"13163","6",2018,"FFh11","Fynbos",1,"Mine",0.0004
+"13163","6",2018,"FFh11","Fynbos",1,"Mine",4e-04
 "13164","6",2018,"FFh2","Fynbos",7,"Mine",0.0028
 "13165","6",2018,"FFh3","Fynbos",79,"Mine",0.0316
 "13166","6",2018,"FFh4","Fynbos",299,"Mine",0.1196
@@ -13218,15 +13218,15 @@
 "13217","6",2018,"FOa3","Forest",62,"Mine",0.0248
 "13218","6",2018,"FOz1","Forest",3,"Mine",0.0012
 "13219","6",2018,"FOz2","Forest",0,"Mine",0
-"13220","6",2018,"FOz3","Forest",2,"Mine",0.0008
+"13220","6",2018,"FOz3","Forest",2,"Mine",8e-04
 "13221","6",2018,"FOz4","Forest",0,"Mine",0
 "13222","6",2018,"FOz5","Forest",183,"Mine",0.0732
 "13223","6",2018,"FOz6","Forest",0,"Mine",0
 "13224","6",2018,"FOz7","Forest",19663,"Mine",7.8652
-"13225","6",2018,"FOz8","Forest",1,"Mine",0.0004
+"13225","6",2018,"FOz8","Forest",1,"Mine",4e-04
 "13226","6",2018,"FOz9","Forest",0,"Mine",0
 "13227","6",2018,"FRa1","Fynbos",602,"Mine",0.2408
-"13228","6",2018,"FRa2","Fynbos",1,"Mine",0.0004
+"13228","6",2018,"FRa2","Fynbos",1,"Mine",4e-04
 "13229","6",2018,"FRc1","Fynbos",112,"Mine",0.0448
 "13230","6",2018,"FRc2","Fynbos",804,"Mine",0.3216
 "13231","6",2018,"FRd1","Fynbos",59,"Mine",0.0236
@@ -13369,7 +13369,7 @@
 "13368","6",2018,"SKn3","Succulent Karoo",12532,"Mine",5.0128
 "13369","6",2018,"SKn4","Succulent Karoo",24705,"Mine",9.882
 "13370","6",2018,"SKn5","Succulent Karoo",1777,"Mine",0.7108
-"13371","6",2018,"SKn6","Succulent Karoo",2,"Mine",0.0008
+"13371","6",2018,"SKn6","Succulent Karoo",2,"Mine",8e-04
 "13372","6",2018,"SKn7","Succulent Karoo",1160,"Mine",0.464
 "13373","6",2018,"SKr1","Succulent Karoo",404,"Mine",0.1616
 "13374","6",2018,"SKr10","Succulent Karoo",147,"Mine",0.0588
@@ -13377,7 +13377,7 @@
 "13376","6",2018,"SKr12","Succulent Karoo",159,"Mine",0.0636
 "13377","6",2018,"SKr13","Succulent Karoo",185,"Mine",0.074
 "13378","6",2018,"SKr14","Succulent Karoo",124,"Mine",0.0496
-"13379","6",2018,"SKr15","Succulent Karoo",2,"Mine",0.0008
+"13379","6",2018,"SKr15","Succulent Karoo",2,"Mine",8e-04
 "13380","6",2018,"SKr16","Succulent Karoo",643,"Mine",0.2572
 "13381","6",2018,"SKr17","Succulent Karoo",1293,"Mine",0.5172
 "13382","6",2018,"SKr18","Succulent Karoo",6307,"Mine",2.5228
@@ -13443,7 +13443,7 @@
 "13442","6",2018,"SVcb29","Savanna",890,"Mine",0.356
 "13443","6",2018,"SVcb3","Savanna",3988,"Mine",1.5952
 "13444","6",2018,"SVcb4","Savanna",26859,"Mine",10.7436
-"13445","6",2018,"SVcb5","Savanna",2,"Mine",0.0008
+"13445","6",2018,"SVcb5","Savanna",2,"Mine",8e-04
 "13446","6",2018,"SVcb6","Savanna",213460,"Mine",85.384
 "13447","6",2018,"SVcb7","Savanna",45972,"Mine",18.3888
 "13448","6",2018,"SVcb8","Savanna",56635,"Mine",22.654
@@ -13599,7 +13599,7 @@
 "13598","6",2020,"FFa1","Fynbos",0,"Mine",0
 "13599","6",2020,"FFa2","Fynbos",624,"Mine",0.2496
 "13600","6",2020,"FFa3","Fynbos",331,"Mine",0.1324
-"13601","6",2020,"FFa4","Fynbos",1,"Mine",0.0004
+"13601","6",2020,"FFa4","Fynbos",1,"Mine",4e-04
 "13602","6",2020,"FFb1","Fynbos",23,"Mine",0.0092
 "13603","6",2020,"FFb2","Fynbos",0,"Mine",0
 "13604","6",2020,"FFb3","Fynbos",0,"Mine",0
@@ -13627,7 +13627,7 @@
 "13626","6",2020,"FFg5","Fynbos",1813,"Mine",0.7252
 "13627","6",2020,"FFh1","Fynbos",83,"Mine",0.0332
 "13628","6",2020,"FFh10","Fynbos",0,"Mine",0
-"13629","6",2020,"FFh11","Fynbos",1,"Mine",0.0004
+"13629","6",2020,"FFh11","Fynbos",1,"Mine",4e-04
 "13630","6",2020,"FFh2","Fynbos",7,"Mine",0.0028
 "13631","6",2020,"FFh3","Fynbos",74,"Mine",0.0296
 "13632","6",2020,"FFh4","Fynbos",261,"Mine",0.1044
@@ -13683,16 +13683,16 @@
 "13682","6",2020,"FOa2","Forest",29,"Mine",0.0116
 "13683","6",2020,"FOa3","Forest",65,"Mine",0.026
 "13684","6",2020,"FOz1","Forest",3,"Mine",0.0012
-"13685","6",2020,"FOz2","Forest",1,"Mine",0.0004
-"13686","6",2020,"FOz3","Forest",2,"Mine",0.0008
+"13685","6",2020,"FOz2","Forest",1,"Mine",4e-04
+"13686","6",2020,"FOz3","Forest",2,"Mine",8e-04
 "13687","6",2020,"FOz4","Forest",0,"Mine",0
 "13688","6",2020,"FOz5","Forest",270,"Mine",0.108
 "13689","6",2020,"FOz6","Forest",0,"Mine",0
 "13690","6",2020,"FOz7","Forest",21078,"Mine",8.4312
-"13691","6",2020,"FOz8","Forest",1,"Mine",0.0004
+"13691","6",2020,"FOz8","Forest",1,"Mine",4e-04
 "13692","6",2020,"FOz9","Forest",0,"Mine",0
 "13693","6",2020,"FRa1","Fynbos",573,"Mine",0.2292
-"13694","6",2020,"FRa2","Fynbos",1,"Mine",0.0004
+"13694","6",2020,"FRa2","Fynbos",1,"Mine",4e-04
 "13695","6",2020,"FRc1","Fynbos",273,"Mine",0.1092
 "13696","6",2020,"FRc2","Fynbos",805,"Mine",0.322
 "13697","6",2020,"FRd1","Fynbos",61,"Mine",0.0244
@@ -13835,7 +13835,7 @@
 "13834","6",2020,"SKn3","Succulent Karoo",12719,"Mine",5.0876
 "13835","6",2020,"SKn4","Succulent Karoo",26715,"Mine",10.686
 "13836","6",2020,"SKn5","Succulent Karoo",2303,"Mine",0.9212
-"13837","6",2020,"SKn6","Succulent Karoo",1,"Mine",0.0004
+"13837","6",2020,"SKn6","Succulent Karoo",1,"Mine",4e-04
 "13838","6",2020,"SKn7","Succulent Karoo",1164,"Mine",0.4656
 "13839","6",2020,"SKr1","Succulent Karoo",239,"Mine",0.0956
 "13840","6",2020,"SKr10","Succulent Karoo",76,"Mine",0.0304
@@ -13909,7 +13909,7 @@
 "13908","6",2020,"SVcb29","Savanna",883,"Mine",0.3532
 "13909","6",2020,"SVcb3","Savanna",3212,"Mine",1.2848
 "13910","6",2020,"SVcb4","Savanna",25892,"Mine",10.3568
-"13911","6",2020,"SVcb5","Savanna",2,"Mine",0.0008
+"13911","6",2020,"SVcb5","Savanna",2,"Mine",8e-04
 "13912","6",2020,"SVcb6","Savanna",188352,"Mine",75.3408
 "13913","6",2020,"SVcb7","Savanna",38805,"Mine",15.522
 "13914","6",2020,"SVcb8","Savanna",49870,"Mine",19.948
@@ -14065,7 +14065,7 @@
 "14064","6",2022,"FFa1","Fynbos",23,"Mine",0.0092
 "14065","6",2022,"FFa2","Fynbos",694,"Mine",0.2776
 "14066","6",2022,"FFa3","Fynbos",316,"Mine",0.1264
-"14067","6",2022,"FFa4","Fynbos",2,"Mine",0.0008
+"14067","6",2022,"FFa4","Fynbos",2,"Mine",8e-04
 "14068","6",2022,"FFb1","Fynbos",20,"Mine",0.008
 "14069","6",2022,"FFb2","Fynbos",0,"Mine",0
 "14070","6",2022,"FFb3","Fynbos",0,"Mine",0
@@ -14093,7 +14093,7 @@
 "14092","6",2022,"FFg5","Fynbos",1661,"Mine",0.6644
 "14093","6",2022,"FFh1","Fynbos",81,"Mine",0.0324
 "14094","6",2022,"FFh10","Fynbos",0,"Mine",0
-"14095","6",2022,"FFh11","Fynbos",1,"Mine",0.0004
+"14095","6",2022,"FFh11","Fynbos",1,"Mine",4e-04
 "14096","6",2022,"FFh2","Fynbos",5,"Mine",0.002
 "14097","6",2022,"FFh3","Fynbos",52,"Mine",0.0208
 "14098","6",2022,"FFh4","Fynbos",250,"Mine",0.1
@@ -14148,9 +14148,9 @@
 "14147","6",2022,"FOa1","Forest",0,"Mine",0
 "14148","6",2022,"FOa2","Forest",36,"Mine",0.0144
 "14149","6",2022,"FOa3","Forest",67,"Mine",0.0268
-"14150","6",2022,"FOz1","Forest",2,"Mine",0.0008
-"14151","6",2022,"FOz2","Forest",1,"Mine",0.0004
-"14152","6",2022,"FOz3","Forest",2,"Mine",0.0008
+"14150","6",2022,"FOz1","Forest",2,"Mine",8e-04
+"14151","6",2022,"FOz2","Forest",1,"Mine",4e-04
+"14152","6",2022,"FOz3","Forest",2,"Mine",8e-04
 "14153","6",2022,"FOz4","Forest",0,"Mine",0
 "14154","6",2022,"FOz5","Forest",334,"Mine",0.1336
 "14155","6",2022,"FOz6","Forest",0,"Mine",0
@@ -14241,7 +14241,7 @@
 "14240","6",2022,"Gm23","Grassland",1364,"Mine",0.5456
 "14241","6",2022,"Gm24","Grassland",0,"Mine",0
 "14242","6",2022,"Gm25","Grassland",0,"Mine",0
-"14243","6",2022,"Gm26","Grassland",2,"Mine",0.0008
+"14243","6",2022,"Gm26","Grassland",2,"Mine",8e-04
 "14244","6",2022,"Gm27","Grassland",165,"Mine",0.066
 "14245","6",2022,"Gm28","Grassland",0,"Mine",0
 "14246","6",2022,"Gm29","Grassland",10,"Mine",0.004
@@ -14301,7 +14301,7 @@
 "14300","6",2022,"SKn3","Succulent Karoo",10978,"Mine",4.3912
 "14301","6",2022,"SKn4","Succulent Karoo",25517,"Mine",10.2068
 "14302","6",2022,"SKn5","Succulent Karoo",989,"Mine",0.3956
-"14303","6",2022,"SKn6","Succulent Karoo",1,"Mine",0.0004
+"14303","6",2022,"SKn6","Succulent Karoo",1,"Mine",4e-04
 "14304","6",2022,"SKn7","Succulent Karoo",1537,"Mine",0.6148
 "14305","6",2022,"SKr1","Succulent Karoo",231,"Mine",0.0924
 "14306","6",2022,"SKr10","Succulent Karoo",85,"Mine",0.034
@@ -14309,7 +14309,7 @@
 "14308","6",2022,"SKr12","Succulent Karoo",148,"Mine",0.0592
 "14309","6",2022,"SKr13","Succulent Karoo",144,"Mine",0.0576
 "14310","6",2022,"SKr14","Succulent Karoo",121,"Mine",0.0484
-"14311","6",2022,"SKr15","Succulent Karoo",1,"Mine",0.0004
+"14311","6",2022,"SKr15","Succulent Karoo",1,"Mine",4e-04
 "14312","6",2022,"SKr16","Succulent Karoo",648,"Mine",0.2592
 "14313","6",2022,"SKr17","Succulent Karoo",1366,"Mine",0.5464
 "14314","6",2022,"SKr18","Succulent Karoo",9405,"Mine",3.762
@@ -14375,7 +14375,7 @@
 "14374","6",2022,"SVcb29","Savanna",799,"Mine",0.3196
 "14375","6",2022,"SVcb3","Savanna",2361,"Mine",0.9444
 "14376","6",2022,"SVcb4","Savanna",24486,"Mine",9.7944
-"14377","6",2022,"SVcb5","Savanna",1,"Mine",0.0004
+"14377","6",2022,"SVcb5","Savanna",1,"Mine",4e-04
 "14378","6",2022,"SVcb6","Savanna",191691,"Mine",76.6764
 "14379","6",2022,"SVcb7","Savanna",40176,"Mine",16.0704
 "14380","6",2022,"SVcb8","Savanna",49506,"Mine",19.8024
@@ -14415,7 +14415,7 @@
 "14414","6",2022,"SVl19","Savanna",117,"Mine",0.0468
 "14415","6",2022,"SVl2","Savanna",7,"Mine",0.0028
 "14416","6",2022,"SVl20","Savanna",2526,"Mine",1.0104
-"14417","6",2022,"SVl21","Savanna",1,"Mine",0.0004
+"14417","6",2022,"SVl21","Savanna",1,"Mine",4e-04
 "14418","6",2022,"SVl22","Savanna",53,"Mine",0.0212
 "14419","6",2022,"SVl23","Savanna",27373,"Mine",10.9492
 "14420","6",2022,"SVl24","Savanna",126,"Mine",0.0504
@@ -14476,7 +14476,7 @@
 "14475","7",1990,"AT43","Albany Thicket",0,"Plantation",0
 "14476","7",1990,"AT44","Albany Thicket",137,"Plantation",0.0548
 "14477","7",1990,"AT45","Albany Thicket",891,"Plantation",0.3564
-"14478","7",1990,"AT46","Albany Thicket",1,"Plantation",0.0004
+"14478","7",1990,"AT46","Albany Thicket",1,"Plantation",4e-04
 "14479","7",1990,"AT47","Albany Thicket",0,"Plantation",0
 "14480","7",1990,"AT48","Albany Thicket",0,"Plantation",0
 "14481","7",1990,"AT49","Albany Thicket",430,"Plantation",0.172
@@ -14793,7 +14793,7 @@
 "14792","7",1990,"SKs11","Succulent Karoo",0,"Plantation",0
 "14793","7",1990,"SKs12","Succulent Karoo",13,"Plantation",0.0052
 "14794","7",1990,"SKs13","Succulent Karoo",5,"Plantation",0.002
-"14795","7",1990,"SKs14","Succulent Karoo",1,"Plantation",0.0004
+"14795","7",1990,"SKs14","Succulent Karoo",1,"Plantation",4e-04
 "14796","7",1990,"SKs2","Succulent Karoo",0,"Plantation",0
 "14797","7",1990,"SKs3","Succulent Karoo",0,"Plantation",0
 "14798","7",1990,"SKs4","Succulent Karoo",0,"Plantation",0
@@ -14925,7 +14925,7 @@
 "14924","7",2014,"AT26","Albany Thicket",0,"Plantation",0
 "14925","7",2014,"AT27","Albany Thicket",0,"Plantation",0
 "14926","7",2014,"AT28","Albany Thicket",3134,"Plantation",1.2536
-"14927","7",2014,"AT29","Albany Thicket",2,"Plantation",0.0008
+"14927","7",2014,"AT29","Albany Thicket",2,"Plantation",8e-04
 "14928","7",2014,"AT30","Albany Thicket",7,"Plantation",0.0028
 "14929","7",2014,"AT31","Albany Thicket",208,"Plantation",0.0832
 "14930","7",2014,"AT32","Albany Thicket",4213,"Plantation",1.6852
@@ -15130,7 +15130,7 @@
 "15129","7",2014,"FS4","Fynbos",26,"Plantation",0.0104
 "15130","7",2014,"FS5","Fynbos",1242,"Plantation",0.4968
 "15131","7",2014,"FS6","Fynbos",55,"Plantation",0.022
-"15132","7",2014,"FS7","Fynbos",1,"Plantation",0.0004
+"15132","7",2014,"FS7","Fynbos",1,"Plantation",4e-04
 "15133","7",2014,"FS9","Fynbos",1893,"Plantation",0.7572
 "15134","7",2014,"Gd1","Grassland",584748,"Plantation",233.8992
 "15135","7",2014,"Gd10","Grassland",0,"Plantation",0
@@ -15224,14 +15224,14 @@
 "15223","7",2014,"SKk3","Succulent Karoo",4,"Plantation",0.0016
 "15224","7",2014,"SKk4","Succulent Karoo",0,"Plantation",0
 "15225","7",2014,"SKk5","Succulent Karoo",161,"Plantation",0.0644
-"15226","7",2014,"SKk6","Succulent Karoo",2,"Plantation",0.0008
+"15226","7",2014,"SKk6","Succulent Karoo",2,"Plantation",8e-04
 "15227","7",2014,"SKk7","Succulent Karoo",557,"Plantation",0.2228
 "15228","7",2014,"SKk8","Succulent Karoo",20,"Plantation",0.008
 "15229","7",2014,"SKk9","Succulent Karoo",0,"Plantation",0
 "15230","7",2014,"SKn1","Succulent Karoo",0,"Plantation",0
 "15231","7",2014,"SKn2","Succulent Karoo",0,"Plantation",0
 "15232","7",2014,"SKn3","Succulent Karoo",0,"Plantation",0
-"15233","7",2014,"SKn4","Succulent Karoo",1,"Plantation",0.0004
+"15233","7",2014,"SKn4","Succulent Karoo",1,"Plantation",4e-04
 "15234","7",2014,"SKn5","Succulent Karoo",0,"Plantation",0
 "15235","7",2014,"SKn6","Succulent Karoo",0,"Plantation",0
 "15236","7",2014,"SKn7","Succulent Karoo",0,"Plantation",0
@@ -15446,7 +15446,7 @@
 "15445","7",2018,"CB5","IOCB",30872,"Plantation",12.3488
 "15446","7",2018,"CB6","IOCB",12637,"Plantation",5.0548
 "15447","7",2018,"Dg1","Desert",0,"Plantation",0
-"15448","7",2018,"Dg10","Desert",1,"Plantation",0.0004
+"15448","7",2018,"Dg10","Desert",1,"Plantation",4e-04
 "15449","7",2018,"Dg2","Desert",0,"Plantation",0
 "15450","7",2018,"Dg3","Desert",0,"Plantation",0
 "15451","7",2018,"Dg4","Desert",0,"Plantation",0
@@ -15500,7 +15500,7 @@
 "15499","7",2018,"FFh7","Fynbos",5834,"Plantation",2.3336
 "15500","7",2018,"FFh8","Fynbos",5619,"Plantation",2.2476
 "15501","7",2018,"FFh9","Fynbos",198618,"Plantation",79.4472
-"15502","7",2018,"FFl1","Fynbos",1,"Plantation",0.0004
+"15502","7",2018,"FFl1","Fynbos",1,"Plantation",4e-04
 "15503","7",2018,"FFl2","Fynbos",161,"Plantation",0.0644
 "15504","7",2018,"FFl3","Fynbos",1486,"Plantation",0.5944
 "15505","7",2018,"FFq1","Fynbos",0,"Plantation",0
@@ -15593,7 +15593,7 @@
 "15592","7",2018,"FS14","Fynbos",0,"Plantation",0
 "15593","7",2018,"FS2","Fynbos",502,"Plantation",0.2008
 "15594","7",2018,"FS3","Fynbos",5341,"Plantation",2.1364
-"15595","7",2018,"FS4","Fynbos",2,"Plantation",0.0008
+"15595","7",2018,"FS4","Fynbos",2,"Plantation",8e-04
 "15596","7",2018,"FS5","Fynbos",29,"Plantation",0.0116
 "15597","7",2018,"FS6","Fynbos",2107,"Plantation",0.8428
 "15598","7",2018,"FS7","Fynbos",0,"Plantation",0
@@ -15604,7 +15604,7 @@
 "15603","7",2018,"Gd3","Grassland",3405,"Plantation",1.362
 "15604","7",2018,"Gd4","Grassland",220443,"Plantation",88.1772
 "15605","7",2018,"Gd5","Grassland",10800,"Plantation",4.32
-"15606","7",2018,"Gd6","Grassland",1,"Plantation",0.0004
+"15606","7",2018,"Gd6","Grassland",1,"Plantation",4e-04
 "15607","7",2018,"Gd7","Grassland",140,"Plantation",0.056
 "15608","7",2018,"Gd8","Grassland",1067,"Plantation",0.4268
 "15609","7",2018,"Gh1","Grassland",8895,"Plantation",3.558
@@ -15870,7 +15870,7 @@
 "15869","7",2020,"AT39","Albany Thicket",0,"Plantation",0
 "15870","7",2020,"AT40","Albany Thicket",1642,"Plantation",0.6568
 "15871","7",2020,"AT41","Albany Thicket",10578,"Plantation",4.2312
-"15872","7",2020,"AT42","Albany Thicket",2,"Plantation",0.0008
+"15872","7",2020,"AT42","Albany Thicket",2,"Plantation",8e-04
 "15873","7",2020,"AT43","Albany Thicket",86,"Plantation",0.0344
 "15874","7",2020,"AT44","Albany Thicket",180,"Plantation",0.072
 "15875","7",2020,"AT45","Albany Thicket",899,"Plantation",0.3596
@@ -15896,7 +15896,7 @@
 "15895","7",2020,"AZa7","Azonal",54082,"Plantation",21.6328
 "15896","7",2020,"AZd1","Azonal",0,"Plantation",0
 "15897","7",2020,"AZd2","Azonal",0,"Plantation",0
-"15898","7",2020,"AZd3","Azonal",2,"Plantation",0.0008
+"15898","7",2020,"AZd3","Azonal",2,"Plantation",8e-04
 "15899","7",2020,"AZd4","Azonal",337,"Plantation",0.1348
 "15900","7",2020,"AZi1","Azonal",1462,"Plantation",0.5848
 "15901","7",2020,"AZi3","Azonal",190,"Plantation",0.076
@@ -15912,7 +15912,7 @@
 "15911","7",2020,"CB5","IOCB",32570,"Plantation",13.028
 "15912","7",2020,"CB6","IOCB",12499,"Plantation",4.9996
 "15913","7",2020,"Dg1","Desert",0,"Plantation",0
-"15914","7",2020,"Dg10","Desert",1,"Plantation",0.0004
+"15914","7",2020,"Dg10","Desert",1,"Plantation",4e-04
 "15915","7",2020,"Dg2","Desert",0,"Plantation",0
 "15916","7",2020,"Dg3","Desert",0,"Plantation",0
 "15917","7",2020,"Dg4","Desert",0,"Plantation",0
@@ -15937,7 +15937,7 @@
 "15936","7",2020,"FFb5","Fynbos",487,"Plantation",0.1948
 "15937","7",2020,"FFb6","Fynbos",27967,"Plantation",11.1868
 "15938","7",2020,"FFc1","Fynbos",54212,"Plantation",21.6848
-"15939","7",2020,"FFd1","Fynbos",1,"Plantation",0.0004
+"15939","7",2020,"FFd1","Fynbos",1,"Plantation",4e-04
 "15940","7",2020,"FFd10","Fynbos",239883,"Plantation",95.9532
 "15941","7",2020,"FFd11","Fynbos",268,"Plantation",0.1072
 "15942","7",2020,"FFd2","Fynbos",5230,"Plantation",2.092
@@ -16059,7 +16059,7 @@
 "16058","7",2020,"FS14","Fynbos",0,"Plantation",0
 "16059","7",2020,"FS2","Fynbos",652,"Plantation",0.2608
 "16060","7",2020,"FS3","Fynbos",5650,"Plantation",2.26
-"16061","7",2020,"FS4","Fynbos",2,"Plantation",0.0008
+"16061","7",2020,"FS4","Fynbos",2,"Plantation",8e-04
 "16062","7",2020,"FS5","Fynbos",50,"Plantation",0.02
 "16063","7",2020,"FS6","Fynbos",2280,"Plantation",0.912
 "16064","7",2020,"FS7","Fynbos",0,"Plantation",0
@@ -16070,7 +16070,7 @@
 "16069","7",2020,"Gd3","Grassland",3008,"Plantation",1.2032
 "16070","7",2020,"Gd4","Grassland",228112,"Plantation",91.2448
 "16071","7",2020,"Gd5","Grassland",9352,"Plantation",3.7408
-"16072","7",2020,"Gd6","Grassland",1,"Plantation",0.0004
+"16072","7",2020,"Gd6","Grassland",1,"Plantation",4e-04
 "16073","7",2020,"Gd7","Grassland",123,"Plantation",0.0492
 "16074","7",2020,"Gd8","Grassland",943,"Plantation",0.3772
 "16075","7",2020,"Gh1","Grassland",9793,"Plantation",3.9172
@@ -16321,7 +16321,7 @@
 "16320","7",2022,"AT24","Albany Thicket",3449,"Plantation",1.3796
 "16321","7",2022,"AT25","Albany Thicket",0,"Plantation",0
 "16322","7",2022,"AT26","Albany Thicket",0,"Plantation",0
-"16323","7",2022,"AT27","Albany Thicket",2,"Plantation",0.0008
+"16323","7",2022,"AT27","Albany Thicket",2,"Plantation",8e-04
 "16324","7",2022,"AT28","Albany Thicket",4577,"Plantation",1.8308
 "16325","7",2022,"AT29","Albany Thicket",0,"Plantation",0
 "16326","7",2022,"AT30","Albany Thicket",22,"Plantation",0.0088
@@ -16378,7 +16378,7 @@
 "16377","7",2022,"CB5","IOCB",34193,"Plantation",13.6772
 "16378","7",2022,"CB6","IOCB",15035,"Plantation",6.014
 "16379","7",2022,"Dg1","Desert",0,"Plantation",0
-"16380","7",2022,"Dg10","Desert",1,"Plantation",0.0004
+"16380","7",2022,"Dg10","Desert",1,"Plantation",4e-04
 "16381","7",2022,"Dg2","Desert",0,"Plantation",0
 "16382","7",2022,"Dg3","Desert",0,"Plantation",0
 "16383","7",2022,"Dg4","Desert",0,"Plantation",0
@@ -16525,7 +16525,7 @@
 "16524","7",2022,"FS14","Fynbos",0,"Plantation",0
 "16525","7",2022,"FS2","Fynbos",780,"Plantation",0.312
 "16526","7",2022,"FS3","Fynbos",6406,"Plantation",2.5624
-"16527","7",2022,"FS4","Fynbos",1,"Plantation",0.0004
+"16527","7",2022,"FS4","Fynbos",1,"Plantation",4e-04
 "16528","7",2022,"FS5","Fynbos",211,"Plantation",0.0844
 "16529","7",2022,"FS6","Fynbos",2394,"Plantation",0.9576
 "16530","7",2022,"FS7","Fynbos",0,"Plantation",0
@@ -16536,7 +16536,7 @@
 "16535","7",2022,"Gd3","Grassland",4581,"Plantation",1.8324
 "16536","7",2022,"Gd4","Grassland",237869,"Plantation",95.1476
 "16537","7",2022,"Gd5","Grassland",10961,"Plantation",4.3844
-"16538","7",2022,"Gd6","Grassland",1,"Plantation",0.0004
+"16538","7",2022,"Gd6","Grassland",1,"Plantation",4e-04
 "16539","7",2022,"Gd7","Grassland",136,"Plantation",0.0544
 "16540","7",2022,"Gd8","Grassland",1385,"Plantation",0.554
 "16541","7",2022,"Gh1","Grassland",14053,"Plantation",5.6212
@@ -16665,7 +16665,7 @@
 "16664","7",2022,"SKs6","Succulent Karoo",0,"Plantation",0
 "16665","7",2022,"SKs7","Succulent Karoo",1865,"Plantation",0.746
 "16666","7",2022,"SKs8","Succulent Karoo",0,"Plantation",0
-"16667","7",2022,"SKs9","Succulent Karoo",2,"Plantation",0.0008
+"16667","7",2022,"SKs9","Succulent Karoo",2,"Plantation",8e-04
 "16668","7",2022,"SKt1","Succulent Karoo",0,"Plantation",0
 "16669","7",2022,"SKt2","Succulent Karoo",1838,"Plantation",0.7352
 "16670","7",2022,"SKt3","Succulent Karoo",1417,"Plantation",0.5668

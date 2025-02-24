@@ -1,0 +1,87 @@
+---
+bibliography: references.bib
+---
+
+### Load required packages
+
+```{r}
+#load packages   
+library(terra)  
+library(tidyverse) 
+library(sf) 
+library(PROJ) 
+```
+
+### Data sources & import:
+
+1.  Sub Tropical Ecosystem Project (STEP) Thicket degradation layer [@lloyd2002] (prepared in ARCGIS PRO, 8 = severely degraded class from STEP. This class is estimated to be equivalent to 80 severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of P. afra and other palatable species usually dominant), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago, and subtropical thicket does not recover naturally over time - rather it enters a alternative stable state - an arid shrubland dominated by Asteraceae typical of the Nama Karoo biome.
+
+2.  National Land Cover (7 class version prepared by SANBI) 2022.
+
+3.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+```{r}
+# Add STEP Data (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 8 = severely degraded 80%). 
+step <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/step_deg2.tif")
+
+# Add national LC, resample to match 20m AEA grid used for supplementary analysis
+nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
+nlc <- resample(nlc, step, method = "near") #  match extent 
+
+# Add vegetation data  
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")  
+# Clean up non veg names 
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE)   
+# rasterise the veg vector 
+veg_r <- rasterize(veg, nlc, "T_MAPCODE")  
+```
+
+## Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+
+```{r}
+# Analysis #Step 1-2.   # get LC  at 1990 time period 
+step_rall  <- as_tibble(crosstab(c(nlc, veg_r, step)))   
+write.csv(step_rall, file = "outputs/step_rall.csv")
+#step_rall <- read.csv("C:/Rdata/LCC_terr/outputs/step_rall.csv")
+
+# clean up names and add km2
+step_rall  <- step_rall  %>%    
+  mutate(km2 = n*400/1000000) %>% # pixel size is 20m
+  rename(LC = nlc2022_7class) %>%
+  rename(STEP = step_deg2)
+
+# Calculate extent of each vegtype within the specific AOI 
+step_list <- step_rall %>%
+  filter(STEP != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_step = sum(km2))
+
+# summarise 
+step_sum <- step_rall %>%
+  filter(T_MAPCODE != "NOTVEG") %>%
+  mutate(LCcomb = case_when(
+                            STEP == 8 & LC ==1 ~ "deg80",
+                            STEP == 0 | STEP == 99 & LC ==1 ~ "nat",
+                            TRUE ~ "notnat")) %>%
+  group_by(T_MAPCODE, LCcomb) %>%
+  summarise(km2tot = sum(km2)) %>%
+  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
+    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
+    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
+    mutate(D1 = case_when(prpdeg >= 0.9 ~ "CR",
+                   prpdeg >= 0.7 ~ "EN",
+                   prpdeg >= 0.5 ~ "VU",
+                  TRUE ~ "LC")) %>%
+    left_join(step_list, by = "T_MAPCODE") %>%
+   mutate(ext_step = ext_step/(nat + notnat + deg80))
+
+
+write.csv(step_sum, file = "outputs/step_sum.csv")
+  
+```

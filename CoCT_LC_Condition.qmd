@@ -1,0 +1,79 @@
+### Load required packages
+
+```{r}
+#load packages   
+library(terra)  
+library(tidyverse) 
+library(sf) 
+library(PROJ) 
+```
+
+### Data sources & import:
+
+1.  CoCT BioNet with Habitat condition
+2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+```{r}
+# Add City of Cape Town Land COver and Condition 2023 (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 4 = notnat, 2 = sec nat, 8 = severely degraded. 
+coct <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/CoCT/coct_cond10.tif")
+
+# Add national LC, resample to match 20m AEA grid used for supplementary analysis
+nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
+nlc <- resample(nlc, coct, method = "near") #  match extent 
+
+# Add vegetation data  
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")  
+
+# Clean up non veg names 
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE)   
+
+# rasterise the veg vector 
+veg_r <- rasterize(veg, nlc, "T_MAPCODE")  
+```
+
+## Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+
+```{r}
+# Analysis #Step 1-2.   # get LC  at 1990 time period 
+coct_rall  <- as_tibble(crosstab(c(nlc, veg_r, coct)))   
+write.csv(coct_rall, file = "outputs/coct_rall.csv")
+
+## read in data if spatial analysis step is being skipped
+##coct_rall <- read.csv("C:/Rdata/LCC_terr/outputs/coct_rall.csv")
+
+# clean up names and add km2
+coct_rall  <- coct_rall  %>%    
+  mutate(km2 = n*400/1000000) %>% # pixel size is 20m
+  rename(LC = nlc2022_7class) %>%
+  rename(COCT = coct_cond10)  
+
+coct_sum <- coct_rall %>%
+  filter(T_MAPCODE != "NOTVEG") %>%
+  mutate(LCcomb = case_when(
+                            COCT == 1 ~ "nat",
+                            COCT == 2 | COCT == 4 ~ "notnat",
+                            COCT == 8 ~ "deg80",
+                            COCT == 99 & LC == 1 ~ "nat",
+                            COCT == 99 & LC > 1 ~ "notnat",
+                            TRUE ~ "unknown")) %>%
+  group_by(T_MAPCODE, LCcomb) %>%
+  summarise(km2tot = sum(km2)) %>%
+  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
+    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
+    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
+    mutate(D1 = case_when(prpdeg >= 0.8 ~ "CR",
+                   prpdeg >= 0.5 ~ "EN",
+                   prpdeg >= 0.3 ~ "VU",
+                  TRUE ~ "LC"))  %>%
+  mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
+                   prplost >= 0.7 ~ "EN",
+                   prplost >= 0.5 ~ "VU",
+                  TRUE ~ "LC")) 
+write.csv(coct_sum, file = "outputs/coct_sum.csv")
+```

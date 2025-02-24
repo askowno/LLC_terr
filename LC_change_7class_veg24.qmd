@@ -166,14 +166,14 @@ lc7_rall <- lc7_list %>%  bind_rows() %>%
   relocate(BIOME, .after = T_MAPCODE)%>%
   mutate(km2 = n*400/1000000) #for test use 160000 for real use 400
 
-write.csv(lc7_rall, file = "lc7_rall.csv") # The csv is used in other workflows (consider using .rds format for within R sharing as it maintains tibble formatting) 
+write.csv(lc7_rall, file = "outputs/lc7_rall.csv") # The csv is used in other workflows (consider using .rds format for within R sharing as it maintains tibble formatting) 
 ```
 
 ### Summarise to test
 
 ```{r}
 # Summarise to test
-#lc7_rall <- read_csv("lc7_rall.csv", show_col_types = FALSE)
+#lc7_rall <- read_csv("outputs/lc7_rall.csv", show_col_types = FALSE)
 lc7_biome <- lc7_rall %>%   
   group_by(YEAR, LC7_text) %>%
   summarise(tot_km2 = sum(km2),.groups = 'drop') %>%
