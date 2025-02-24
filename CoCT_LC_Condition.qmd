@@ -12,6 +12,7 @@ library(PROJ)
 
 1.  CoCT BioNet with Habitat condition
 2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+3.  National Land Cover 2022 7 class version prepared by SANBI.
 
 ```{r}
 # Add City of Cape Town Land COver and Condition 2023 (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 4 = notnat, 2 = sec nat, 8 = severely degraded. 
@@ -35,9 +36,9 @@ veg_r <- rasterize(veg, nlc, "T_MAPCODE")
 
 *Cross-tabulate land cover time series with vegetation.*
 
-Step 1. Stack the land cover for each time period with the vegetation data.
+Step 1. Stack the land cover and condition data for COCT, NL and vegetation.
 
-Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+Step 2. Cross-tabulate raster stack to the output table (in tibble format).
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
