@@ -30,7 +30,7 @@
 "0","  relocate(BIOME, .after = T_MAPCODE)%>%"
 "0","  mutate(km2 = n*400/1000000)  #CHECK THIS# for test use 16000 for final use 400"
 "0","  "
-"0","write.csv(sa_lc7_rall, file = ""sa_lc7_rall.csv"") "
+"0","write.csv(sa_lc7_rall, file = ""outputs/sa_lc7_rall.csv"") "
 "0",""
 "0","# This csv can be loaded to excel and using a pivot table summary stats for each type biome LC can be calculated "
 "0",""

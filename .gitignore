@@ -1,9 +1,9 @@
 # R-related files
 *.Rproj
-.Rproj.user/
-.Rhistory
-.RData
-.Ruserdata
+*.Rproj.user/
+*.Rhistory
+*.RData
+*.Ruserdata
 
 # Temporary files
 *.log
@@ -12,3 +12,4 @@
 # System files
 .DS_Store       # macOS
 Thumbs.db       # Windows
+.Rproj.user
