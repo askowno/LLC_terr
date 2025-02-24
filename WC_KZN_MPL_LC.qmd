@@ -21,11 +21,11 @@ library(PROJ)
 
 ### Data sources & import:
 
-1.  Western Cape Provincial Land Cover (Cape Nature, 2022).
+1.  Western Cape Provincial Land Cover (Cape Nature, 2022). Data supplied in ESRI GRID format, converted to a TIFF in ARCGIS PRO, 10 m data (UTM34S) resampled to match 20m and Albers Equal Area national land cover grid. Reclassified to match the NLC classes.
 
-2.  KwaZulu-Natal Provincial Land Cover (Ezemvelo KZN Wildlife, 2017).
+2.  KwaZulu-Natal Provincial Land Cover (Ezemvelo KZN Wildlife, 2017). Data supplied in ESRI gdb format, converted to a TIFF in ARCGIS PRO, 20 m data (UTM35S) resampled to match 20m and Albers Equal Area national land cover grid. Reclassified to match the NLC classes.
 
-3.  Mpumalanga Provincial Land Cover (MPTA, 2017).
+3.  Mpumalanga Provincial Land Cover (MPTA, 2017). Data supplied in ESRI gdb format, converted to a TIFF in ARCGIS PRO, 20 m data (UTM35S) resampled to match 20m and Albers Equal Area national land cover grid. Reclassified to match the NLC classes.
 
 4.  National Land Cover (7 class version prepared by SANBI) 2022.
 
@@ -66,11 +66,11 @@ veg_r <- rasterize(veg, nlc, "T_MAPCODE")
 
 ## Analysis
 
-*Cross-tabulate land cover time series with vegetation.*
+*Cross-tabulate land cover vegetation.*
 
-Step 1. Stack the land cover for each time period with the vegetation data.
+Step 1. Stack the land cover for region with national land cover and national vegetation data.
 
-Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+Step 2. Cross-tabulate raster stack and add a column region to the output table (in tibble format).
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
