@@ -12,7 +12,16 @@ Land cover change spatial analysis for the 2025 National Biodiversity Assessment
 
 a)  LCC including SA Lesotho and Swaziland [LC_change_7class_veg24.qmd](LC_change_7class_veg24.qmd) for the Red List of Ecosystems assessments);
 
-b)  LCC excluding Lesotho and Eswatini [LC_change_7class_veg24_SAonly.qmd](LC_change_7class_veg24_SAonly.qmd) for Ecosystem Area Index and national statistics. Only the SOuth African extent of each ecosystem is considered.
+b)  LCC excluding Lesotho and Eswatini [LC_change_7class_veg24_SAonly.qmd](LC_change_7class_veg24_SAonly.qmd) for Ecosystem Area Index and national statistics. Only the South African extent of each ecosystem is considered.
+
+```{=html}
+<!-- -->
+```
+1.  National Land Cover 7 class version (SANBI) for 1990, 2014, 2018, 2020 and 2022
+
+2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI (Dayaram et al., 2019; Mucina and Rutherford 2006).
+
+*The ecosystem data (vegetation types) and the NLC data for each time point were cross tabulated and then summarised to assess Criterion A3 and A2b of the IUCN RLE.* Results for SA only [outputs/sa_lc7_rall.csv](outputs/sa_lc7_rall.csv); results for SA, Lesotho and Eswatini [outputs/lc7_rall.csv](outputs/lc7_rall.csv).
 
 ### Supplementary land cover and ecosystem condition data from conservation authorities and regional programmes
 
@@ -32,7 +41,7 @@ Land cover and ecosystem condition products prepared by provinical or metropolit
 
 5.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI (Dayaram et al., 2019; Mucina and Rutherford 2006).
 
-*The ecosystem data (vegetation types), NLC, WC, KZN and MPL data were cross tabulated and then summarised to assess Criterion A3 of the IUCN RLE.*
+*The ecosystem data (vegetation types), NLC, WC, KZN and MPL data were cross tabulated and then summarised to assess Criterion A3 of the IUCN RLE.* Results [outputs/alt_sum.csv](outputs/alt_sum.csv)
 
 #### City of Cape Town land cover and ecosystem condition 
 
@@ -40,7 +49,7 @@ Land cover and ecosystem condition products prepared by provinical or metropolit
 
 City of Cape Town Biodiversity Network (CoCT, 2024). Data supplied in ESRI gdb format, converted to a TIFF in ARCGIS PRO, unprojected vector data rasterized and to match 20m and Albers Equal Area national land cover grid. Reclassified to match the NLC 7class, with severely degraded areas (referred to as "poor" condition in source data) given value = 8 and estimated to have severity of \>80%. Impacts occurred more than 50 years ago.
 
-*The ecosystem data (vegetation types), and NLC and CoCT data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.*
+*The ecosystem data (vegetation types), and NLC and CoCT data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/coct_sum.csv](outputs/coct_sum.csv)
 
 #### Nelson Mandela Bay Metro land cover and ecosystem condition 
 
@@ -48,7 +57,7 @@ City of Cape Town Biodiversity Network (CoCT, 2024). Data supplied in ESRI gdb f
 
 Nelson Mandela Bay degradation data (Stewart et al., 2015) (prepared in ARCGIS PRO, 8 = severely degraded class from NMB degradation, 4 = builtup, 0 = unknown). Class 8 (degradation) is estimated to be equivalent to 80% severity on RLE Criterion D - factors include overgrazing / browsing, fuel wood collection, bush clearing (to promote grazing), resulting in severe reduction in natural tree or shrub cover, changes in species composition (palatable species usually dominant have been lost), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago.
 
-*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.*
+*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/nmb_sum.csv](outputs/nmb_sum.csv)
 
 #### Subtropical Ecosystem Project thicket ecosystem condition 
 
@@ -56,7 +65,7 @@ Nelson Mandela Bay degradation data (Stewart et al., 2015) (prepared in ARCGIS P
 
 Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2002) (prepared in ARCGIS PRO, 8 = severely degraded class from STEP.) This class is estimated to be equivalent to 80% severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of P. afra and other palatable species usually dominant), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago, and subtropical thicket does not recover naturally over time - rather it enters a alternative stable state - an arid shrubland dominated by Asteraceae typical of the Nama Karoo biome.
 
-*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.*
+*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/step_sum.csv](outputs/step_sum.csv)
 
 #### Little Karoo ecosystem ecosystem condition 
 
@@ -66,4 +75,4 @@ Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2
 
 2.  Eastern Little Karoo degradation map (single ecosystem type covered) prepared by Jan and Annelize Vlok based on field surveys and aerial photographs (Vlok and Vlok pers com, 2020). Severely overgrazed / browsed areas (severity of \> 80%), with evidence (aerial photos) that the degradation occured in the last 50years.
 
-*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3/D1 of the IUCN RLE.*
+*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3/D1 of the IUCN RLE.* Results for Little Karoo [outputs/lk_sum.csv](outputs/lk_sum.csv); results for Eastern Little Karoo [outputs/elk_sum.csv](outputs/elk_sum.csv)
