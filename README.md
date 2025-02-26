@@ -14,9 +14,8 @@ a)  LCC including SA Lesotho and Swaziland [LC_change_7class_veg24.qmd](LC_chang
 
 b)  LCC excluding Lesotho and Eswatini [LC_change_7class_veg24_SAonly.qmd](LC_change_7class_veg24_SAonly.qmd) for Ecosystem Area Index and national statistics. Only the South African extent of each ecosystem is considered.
 
-```{=html}
 <!-- -->
-```
+
 1.  National Land Cover 7 class version (SANBI) for 1990, 2014, 2018, 2020 and 2022
 
 2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI (Dayaram et al., 2019; Mucina and Rutherford 2006).
@@ -43,7 +42,7 @@ Land cover and ecosystem condition products prepared by provinical or metropolit
 
 *The ecosystem data (vegetation types), NLC, WC, KZN and MPL data were cross tabulated and then summarised to assess Criterion A3 of the IUCN RLE.* Results [outputs/alt_sum.csv](outputs/alt_sum.csv)
 
-#### City of Cape Town land cover and ecosystem condition 
+#### City of Cape Town land cover and ecosystem condition
 
 [CoCT_LC_Condition.qmd](CoCT_LC_Condition.qmd)
 
@@ -51,7 +50,7 @@ City of Cape Town Biodiversity Network (CoCT, 2024). Data supplied in ESRI gdb f
 
 *The ecosystem data (vegetation types), and NLC and CoCT data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/coct_sum.csv](outputs/coct_sum.csv)
 
-#### Nelson Mandela Bay Metro land cover and ecosystem condition 
+#### Nelson Mandela Bay Metro land cover and ecosystem condition
 
 [NMB_Condition.qmd](NMB_Condition.qmd)
 
@@ -59,7 +58,7 @@ Nelson Mandela Bay degradation data (Stewart et al., 2015) (prepared in ARCGIS P
 
 *The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/nmb_sum.csv](outputs/nmb_sum.csv)
 
-#### Subtropical Ecosystem Project thicket ecosystem condition 
+#### Subtropical Ecosystem Project thicket ecosystem condition
 
 [STEP_Condition.qmd](STEP_Condition.qmd)
 
@@ -67,7 +66,7 @@ Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2
 
 *The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/step_sum.csv](outputs/step_sum.csv)
 
-#### Little Karoo ecosystem ecosystem condition 
+#### Little Karoo ecosystem ecosystem condition
 
 [LK_Condition.qmd](LK_Condition.qmd)
 
