@@ -42,11 +42,11 @@ Step 2. Cross-tabulate raster stack to the output table (in tibble format).
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
-coct_rall  <- as_tibble(crosstab(c(nlc, veg_r, coct)))   
-write.csv(coct_rall, file = "outputs/coct_rall.csv")
+#coct_rall  <- as_tibble(crosstab(c(nlc, veg_r, coct)))   
+#write.csv(coct_rall, file = "outputs/coct_rall.csv")
 
 ## read in data if spatial analysis step is being skipped
-##coct_rall <- read.csv("C:/Rdata/LCC_terr/outputs/coct_rall.csv")
+coct_rall <- read.csv("C:/Rdata/LCC_terr/outputs/coct_rall.csv")
 
 # clean up names and add km2
 coct_rall  <- coct_rall  %>%    
@@ -54,6 +54,13 @@ coct_rall  <- coct_rall  %>%
   rename(LC = nlc2022_7class) %>%
   rename(COCT = coct_cond10)  
 
+# Calculate extent of each vegtype within the specific AOI 
+coct_list <- coct_rall %>%
+  filter(COCT != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_coct = sum(km2))
+
+# summarise
 coct_sum <- coct_rall %>%
   filter(T_MAPCODE != "NOTVEG") %>%
   mutate(LCcomb = case_when(
@@ -75,6 +82,9 @@ coct_sum <- coct_rall %>%
   mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
                    prplost >= 0.7 ~ "EN",
                    prplost >= 0.5 ~ "VU",
-                  TRUE ~ "LC")) 
+                  TRUE ~ "LC")) %>%
+      left_join(coct_list, by = "T_MAPCODE") %>%
+   mutate(ext_coct = ext_coct/(nat + notnat + deg80))
+
 write.csv(coct_sum, file = "outputs/coct_sum.csv")
 ```
