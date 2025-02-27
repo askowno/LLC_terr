@@ -24,7 +24,7 @@ library(PROJ)
 
 ```{r}
 # Add LK Data (prepared in ARCGIS PRO), where 0 = inside AOI but no value assigned, 8 = severely degraded 80%). 
-LK <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/littlekaroo_deg2.tif")
+LK <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/littlekaroo_deg4.tif")
 ELK <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/easternlittlekaroo_deg2.tif")
 # Add national LC, resample to match 20m AEA grid used for supplementary analysis
 nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
@@ -45,19 +45,19 @@ veg_r <- rasterize(veg, nlc, "T_MAPCODE")
 
 Step 1. Stack the land cover for each time period with the vegetation data.
 
-Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.\
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
 lk_rall  <- as_tibble(crosstab(c(nlc, veg_r, LK, ELK)))   
-write.csv(lk_rall, file = "outputs/lk_rall.csv")
+write.csv(lk_rall, file = "outputs/lk_rall2.csv")
 
 # Import cross tab output to avoid running spatial analysis 
 #lk_rall <- read.csv("C:/Rdata/LCC_terr/outputs/lk_rall.csv")
 
 # Calculate extent of each vegtype within the specific AOI 
 lk_list <- lk_rall %>%
-  filter(littlekaroo_deg2 != 99, T_MAPCODE != "NOTVEG") %>%
+  filter(littlekaroo_deg4 != 99, T_MAPCODE != "NOTVEG") %>%
   group_by(T_MAPCODE) %>%
   summarise(ext_lk = sum(n)*400/1000000)
 
@@ -65,27 +65,22 @@ lk_list <- lk_rall %>%
 lk_rall  <- lk_rall  %>%    
   mutate(km2 = n*400/1000000) %>% # pixel size is 20m
   rename(LC = nlc2022_7class) %>%
-  rename(LK = littlekaroo_deg2) %>%
+  rename(LK = littlekaroo_deg4) %>%
   rename(ELK = easternlittlekaroo_deg2)
 
+options(scipen =999)
 lk_sum <- lk_rall %>%
   filter(T_MAPCODE != "NOTVEG") %>%
   mutate(LCcomb = case_when(
-                            ELK == 8 & LC == 1 ~ "deg80", 
-                            ELK == 0 & LC == 1 ~ "nat", 
-                            ELK == 0 & LC > 1 ~ "notnat", 
-                            LK == 8 & LC == 1 ~ "deg80",
-                            LK == 0 & LC == 1 ~ "nat",
-                            LK == 0 & LC > 1 ~ "notnat",
+                            ELK == 8 | LK == 8 ~ "deg80", 
                             LC == 1 ~ "nat", 
                             LC > 1 ~ "notnat", 
                             TRUE ~ "unknown")) %>%
   group_by(T_MAPCODE, LCcomb) %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
-    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D3 = case_when(prpdeg >= 0.9 ~ "CR",
+    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1&3)
+    mutate(D3_lk = case_when(prpdeg >= 0.9 ~ "CR",
                    prpdeg >= 0.7 ~ "EN",
                    prpdeg >= 0.5 ~ "VU",
                   TRUE ~ "LC")) %>%
@@ -93,24 +88,5 @@ lk_sum <- lk_rall %>%
    mutate(ext_lk = ext_lk/(nat + notnat + deg80))
 
 write.csv(lk_sum, file = "outputs/lk_sum.csv")
-
-elk_sum <- lk_rall %>%
-filter(T_MAPCODE != "NOTVEG", T_MAPCODE == "SKv11", n != 0)  %>% 
-         mutate(LCcomb = case_when(
-                            ELK == 8 | LK == 8  ~ "deg80",
-                            ELK == 0 & LC == 1 ~ "nat", 
-                            ELK == 0 & LC > 1 ~ "notnat", 
-                            TRUE ~ "unknown")) %>%
-  group_by(T_MAPCODE, LCcomb) %>%
-  summarise(km2tot = sum(km2)) %>%
-  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
-    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D1 = case_when(prpdeg >= 0.8 ~ "CR",
-                   prpdeg >= 0.5 ~ "EN",
-                   prpdeg >= 0.3 ~ "VU",
-                  TRUE ~ "LC")) 
-
-write.csv(elk_sum, file = "outputs/elk_sum.csv")
   
 ```
