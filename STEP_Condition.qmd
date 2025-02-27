@@ -14,7 +14,7 @@ library(PROJ)
 
 ### Data sources & import:
 
-1.  Sub Tropical Ecosystem Project (STEP) Thicket degradation layer [@lloyd2002] (prepared in ARCGIS PRO, 8 = severely degraded class from STEP. This class is estimated to be equivalent to 80 severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of P. afra and other palatable species usually dominant), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago, and subtropical thicket does not recover naturally over time - rather it enters a alternative stable state - an arid shrubland dominated by Asteraceae typical of the Nama Karoo biome.
+1.  Sub Tropical Ecosystem Project (STEP) Thicket degradation layer [@lloyd2002] (prepared in ARCGIS PRO, 8 = severely degraded class from STEP. This class is estimated to be equivalent to 80 severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of *P. afra* and other palatable species usually dominant), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago, and subtropical thicket does not recover naturally over time - rather it enters a alternative stable state - an arid shrubland dominated by Asteraceae typical of the Nama Karoo biome.
 
 2.  National Land Cover (7 class version prepared by SANBI) 2022.
 
@@ -46,9 +46,9 @@ Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (fro
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
-step_rall  <- as_tibble(crosstab(c(nlc, veg_r, step)))   
-write.csv(step_rall, file = "outputs/step_rall.csv")
-#step_rall <- read.csv("C:/Rdata/LCC_terr/outputs/step_rall.csv")
+#step_rall  <- as_tibble(crosstab(c(nlc, veg_r, step)))   
+#write.csv(step_rall, file = "outputs/step_rall.csv")
+step_rall <- read.csv("C:/Rdata/LCC_terr/outputs/step_rall.csv")
 
 # clean up names and add km2
 step_rall  <- step_rall  %>%    
@@ -72,11 +72,11 @@ step_sum <- step_rall %>%
   group_by(T_MAPCODE, LCcomb) %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
+    mutate(prpdeg_step = deg80/(nat+deg80)) %>% # cond of remnants (D1)
     mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D1 = case_when(prpdeg >= 0.9 ~ "CR",
-                   prpdeg >= 0.7 ~ "EN",
-                   prpdeg >= 0.5 ~ "VU",
+    mutate(D3_step = case_when(prpdeg_step >= 0.9 ~ "CR",
+                   prpdeg_step >= 0.7 ~ "EN",
+                   prpdeg_step >= 0.5 ~ "VU",
                   TRUE ~ "LC")) %>%
     left_join(step_list, by = "T_MAPCODE") %>%
    mutate(ext_step = ext_step/(nat + notnat + deg80))

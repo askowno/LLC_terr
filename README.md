@@ -64,7 +64,7 @@ Nelson Mandela Bay degradation data (Stewart et al., 2015) (prepared in ARCGIS P
 
 Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2002) (prepared in ARCGIS PRO, 8 = severely degraded class from STEP.) This class is estimated to be equivalent to 80% severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of P. afra and other palatable species usually dominant), increase in bare ground fraction (with soil loss). Impacts occurred more than 50 years ago, and subtropical thicket does not recover naturally over time - rather it enters a alternative stable state - an arid shrubland dominated by Asteraceae typical of the Nama Karoo biome.
 
-*The ecosystem data (vegetation types), and NLC and NMB data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results [outputs/step_sum.csv](outputs/step_sum.csv)
+*The ecosystem data (vegetation types), and NLC and STEP data were cross tabulated and then summarised to assess Criterion D3 of the IUCN RLE.* Results [outputs/step_sum.csv](outputs/step_sum.csv)
 
 #### Little Karoo ecosystem ecosystem condition
 
