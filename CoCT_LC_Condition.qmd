@@ -75,9 +75,9 @@ coct_sum <- coct_rall %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
     mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D1 = case_when(prpdeg >= 0.8 ~ "CR",
-                   prpdeg >= 0.5 ~ "EN",
-                   prpdeg >= 0.3 ~ "VU",
+    mutate(D3 = case_when(prpdeg >= 0.9 ~ "CR",
+                   prpdeg >= 0.7 ~ "EN",
+                   prpdeg >= 0.5 ~ "VU",
                   TRUE ~ "LC"))  %>%
   mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
                    prplost >= 0.7 ~ "EN",
