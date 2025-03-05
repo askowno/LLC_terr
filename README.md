@@ -29,7 +29,7 @@ G[NLC 2020 DFFE]--reclass in ARCPRO--> H(nlc2020_7class.tif) --load to R terra--
 I[NLC 2022 DFFE]--reclass in ARCPRO--> J(nlc2022_7class.tif) --load to R terra--> K(Stack);
 K--> L(Cross-tabulate);
 M[National Vegetation Map 2024] --load and make raster --> L;
-N[national mask] --optional step--> L;
+N[national mask] --optional_step--> L;
 L--> N(Summarise lc7_rall.csv or sa_lc7_rall.csv);
 ```
 
