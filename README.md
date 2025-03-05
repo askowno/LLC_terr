@@ -8,23 +8,34 @@ February 2025
 
 ### National Land Cover Change
 
-Land cover change spatial analysis for the 2025 National Biodiversity Assessment There are two versions of the cross-tabulation of land cover and vegetation types:
+Land cover change spatial analysis for the 2025 National Biodiversity Assessment is based on the cross-tabulation of land cover change data and maps of potential vegetation (terrestrial ecosystem types).
 
-a)  LCC including SA Lesotho and Swaziland [LC_change_7class_veg24.qmd](LC_change_7class_veg24.qmd) for the Red List of Ecosystems assessments);
+##### Input data:
 
-b)  LCC excluding Lesotho and Eswatini [LC_change_7class_veg24_SAonly.qmd](LC_change_7class_veg24_SAonly.qmd) for Ecosystem Area Index and national statistics. Only the South African extent of each ecosystem is considered.
+1.  National Land Cover 7 class version (prepared by SANBI) for 1990, 2014, 2018, 2020 and 2022 (based on National Land Cover products served by the Department of Forestry Fisheries and the Environment).
 
-<!-- -->
+2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) released in January 2025 by SANBI (Dayaram et al., 2019; Mucina and Rutherford 2006).
 
-1.  National Land Cover 7 class version (SANBI) for 1990, 2014, 2018, 2020 and 2022
+The ecosystem data (vegetation types) and the NLC data for each time point were cross tabulated in R terra and then summarised. Two versions of this analysis were developed. a) Including South Africa, Lesotho and Eswatini [LC_change_7class_veg24.qmd](LC_change_7class_veg24.qmd) for use in Red List of Ecosystems assessments - these require full ecosystem extent; b) South Africa only [LC_change_7class_veg24_SAonly.qmd](LC_change_7class_veg24_SAonly.qmd) for the Ecosystem Area Index and national statistics - these require only the South African extent of each ecosystem type
 
-2.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI (Dayaram et al., 2019; Mucina and Rutherford 2006).
+The outputs of these analyses ([outputs/sa_lc7_rall.csv](outputs/sa_lc7_rall.csv) and [outputs/lc7_rall.csv](outputs/lc7_rall.csv)) form the basis of workflows in the RLE_terr and EAI_terr Repos.
 
-*The ecosystem data (vegetation types) and the NLC data for each time point were cross tabulated and then summarised to assess Criterion A3 and A2b of the IUCN RLE.* Results for SA only [outputs/sa_lc7_rall.csv](outputs/sa_lc7_rall.csv); results for SA, Lesotho and Eswatini [outputs/lc7_rall.csv](outputs/lc7_rall.csv).
+``` mermaid
+flowchart LR
+A[NLC 1990 DFFE]--reclass in ARCPRO--> B(nlc1990_7class.tif) --load to R terra--> K(Stack); 
+C[NLC 2014 DFFE]--reclass in ARCPRO--> D(nlc2014_7class.tif) --load to R terra--> K(Stack); 
+E[NLC 2018 DFFE]--reclass in ARCPRO--> F(nlc2018_7class,tif) --load to R terra--> K(Stack);
+G[NLC 2020 DFFE]--reclass in ARCPRO--> H(nlc2020_7class.tif) --load to R terra--> K(Stack);
+I[NLC 2022 DFFE]--reclass in ARCPRO--> J(nlc2022_7class.tif) --load to R terra--> K(Stack);
+K--> L(Cross-tabulate);
+M[National Vegetation Map 2024] --load and make raster --> L;
+N[national mask] --optional step--> L;
+L--> N(Summarise lc7_rall.csv or sa_lc7_rall.csv);
+```
 
 ### Supplementary land cover and ecosystem condition data from conservation authorities and regional programmes
 
-Land cover and ecosystem condition products prepared by provinical or metropolitan environmental authorities and major region environmental programmes have high confidence estimates and, due to their more local focus and extensive error correction and validation steps. Where available these data are used in conjunction with national data sets to estimate remaining extent of selected ecosystem types and to estimate the extent (required for Criterion A) and severity of functional declines (required for Criterion D).
+Land cover and ecosystem condition products prepared by provincial or metropolitan environmental authorities and major region environmental programmes have high confidence estimates and, due to their more local focus and extensive error correction and validation steps. Where available these data are used in conjunction with national data sets to estimate remaining extent of selected ecosystem types and to estimate the extent (required for Criterion A) and severity of functional declines (required for Criterion D).
 
 #### Alternative Western Cape, Mpumalanga and KwaZulu-Natal land cover
 
