@@ -1,0 +1,44 @@
+```{r}
+
+#load packages  
+library(terra) 
+library(tidyverse)
+library(PROJ)
+
+#Add data but change pathways to where you save the data!
+
+#load land cover
+lc2022 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif")
+
+#load vegetation data 
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")
+
+#load provinces
+prov <- vect("C:/Users/skownoa/Dropbox/NBAwork/SA_Boundaries/SA_boundaries_NBA2025.gdb", "SA_provinces")
+
+# to help differentiate masked areas (LES and SWA) from NON TERRESTRIAL areas add "NOTVEG" to T_MAPCODE where T_NAME = "Non-Terrestrial*"
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE) 
+
+# rasterize the vectors
+vegrast <- rasterize(veg,lc2022,"T_MAPCODE") 
+provrast <- rasterize(prov, lc2022, "PROVINCE")
+
+# cross tabulate all 
+
+rall_prov <- as_tibble(crosstab(c(lc2022,vegrast, provrast))) 
+
+ # NOTE this will take at least 2hour to run maybe more!
+
+# write to disk so that you can start the tabular analysis without rerunning the crosstab later
+
+write.csv(rall_prov, file = "outputs/rall_prov.csv") 
+
+# from here use the LCC script to guide you to how to clean up the table and then summarise it as required. Use the other scripts to help see what to add in text explanations
+
+# load the results of the crosstab and start modifying the table (or open in excel and use pivots)
+
+rall_prov <- read.csv("outputs/rall_prov.csv") 
+
+```
+
+### 
