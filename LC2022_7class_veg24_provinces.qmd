@@ -41,4 +41,45 @@ rall_prov <- read.csv("outputs/rall_prov.csv")
 
 ```
 
-### 
+```{r}
+#import to avoid the cross tab 
+# rall_prov.csv <- read.csv("C:/Rdata/LCC_terr/outputs/rall_prov.csv")
+
+prov_tb <- rall_prov %>%  
+  filter(n != 0) %>%
+  rename(LC = nlc2022_7class)  %>%
+  mutate(BIOME = str_replace_all(
+    T_MAPCODE,c("AT.*" = "Albany Thicket",
+                "AZ.*" = "Azonal",
+                "CB.*" = "IOCB", 
+                "D.*"  = "Desert",
+                "FF.*" = "Fynbos", 
+                "FR.*" = "Fynbos",
+                "FS.*" = "Fynbos",
+                "FO.*" = "Forest", 
+                "G.*" = "Grassland",
+                "NK.*" = "Nama-Karoo", 
+                "NOTVEG.*" = "NOTVEG",
+                "SK.*" = "Succulent Karoo",
+                "SV.*" = "Savanna"))) %>%
+  mutate(LC_text = case_when(
+    LC == 1 ~ "Natural", 
+    LC == 2 ~ "Secondary-natural", 
+    LC == 3 ~ "Artificial-waterbody", 
+    LC == 4 ~ "Built-up", 
+    LC == 5 ~ "Cropland", 
+    LC == 6 ~ "Mine",
+    LC == 7 ~ "Plantation")) %>%
+  relocate(BIOME, .after = T_MAPCODE)%>%
+  mutate(km2 = n*400/1000000) #for test use 160000 for real use 400
+
+```
+
+```{r}
+# summarise per prov
+prov_sum <- prov_tb %>%
+  filter(PROVINCE != "Island - mainland marine") %>%
+  group_by(PROVINCE, LC_text) %>%
+  summarise(totkm2 = sum(km2)) %>%
+  pivot_wider(names_from = LC_text, values_from = totkm2)
+```
