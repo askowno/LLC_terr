@@ -64,8 +64,8 @@ Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (fro
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
-nmb_rall  <- as_tibble(crosstab(c(nlc, veg_r, nmb)))   
-write.csv(nmb_rall, file = "outputs/nmb_rall.csv")
+#nmb_rall  <- as_tibble(crosstab(c(nlc, veg_r, nmb)))   
+#write.csv(nmb_rall, file = "outputs/nmb_rall.csv")
 # Read in data to avoid spatial steps
 nmb_rall <- read.csv("C:/Rdata/LCC_terr/outputs/nmb_rall.csv")
 
@@ -92,11 +92,11 @@ nmb_sum <- nmb_rall %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prcdeg_nmb = 100*round(deg80/(nat+deg80),2))  %>% # cond of remnants (D1)
     mutate(prclost_nmb = 100*round(notnat/(nat+notnat+deg80),2)) %>% # ext of remnants (A3)
-    mutate(D3 = case_when(prcdeg_nmb >= 90 ~ "CR",
+    mutate(D3_nmb = case_when(prcdeg_nmb >= 90 ~ "CR",
                    prcdeg_nmb >= 70 ~ "EN",
                    prcdeg_nmb >= 50 ~ "VU",
                   TRUE ~ "LC")) %>%
-  mutate(A3 = case_when(prclost_nmb >= 90 ~ "CR",
+  mutate(A3_nmb = case_when(prclost_nmb >= 90 ~ "CR",
                    prclost_nmb >= 70 ~ "EN",
                    prclost_nmb >= 50 ~ "VU",
                   TRUE ~ "LC")) %>%

@@ -74,8 +74,8 @@ Step 2. Cross-tabulate raster stack and add a column region to the output table 
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
-alt_rall  <- as_tibble(crosstab(c(nlc, veg_r, wc, mpl, kzn)))   
-write.csv(alt_rall, file = "outputs/alt_rall.csv")
+#alt_rall  <- as_tibble(crosstab(c(nlc, veg_r, wc, mpl, kzn)))   
+#write.csv(alt_rall, file = "outputs/alt_rall.csv")
 
 # Import cross tab output to avoid running spatial analysis 
 alt_rall <- read.csv("C:/Rdata/LCC_terr/outputs/alt_rall.csv")
@@ -122,7 +122,7 @@ alt_sum <- alt_rall %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prclost_alt = 100*round(notnat/(nat+notnat),2)) %>% # ext of remnants (A3)
-    mutate(A3 = case_when(prclost_alt >= 90 ~ "CR",
+    mutate(A3_alt = case_when(prclost_alt >= 90 ~ "CR",
                    prclost_alt >= 50 ~ "EN",
                    prclost_alt >= 50 ~ "VU",
                   TRUE ~ "LC")) %>% 
