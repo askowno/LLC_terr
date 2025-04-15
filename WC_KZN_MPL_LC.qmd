@@ -121,10 +121,10 @@ alt_sum <- alt_rall %>%
   group_by(T_MAPCODE, LCcomb) %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prplost = notnat/(nat+notnat)) %>% # ext of remnants (A3)
-    mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
-                   prplost >= 0.7 ~ "EN",
-                   prplost >= 0.5 ~ "VU",
+    mutate(prclost_alt = 100*round(notnat/(nat+notnat),2)) %>% # ext of remnants (A3)
+    mutate(A3 = case_when(prclost_alt >= 90 ~ "CR",
+                   prclost_alt >= 50 ~ "EN",
+                   prclost_alt >= 50 ~ "VU",
                   TRUE ~ "LC")) %>% 
    left_join(wc_list, by = "T_MAPCODE") %>%
    left_join(kzn_list, by = "T_MAPCODE") %>%

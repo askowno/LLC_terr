@@ -72,11 +72,11 @@ step_sum <- step_rall %>%
   group_by(T_MAPCODE, LCcomb) %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prpdeg_step = deg80/(nat+deg80)) %>% # cond of remnants (D1)
+    mutate(prcdeg_step = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D1)
     mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D3_step = case_when(prpdeg_step >= 0.9 ~ "CR",
-                   prpdeg_step >= 0.7 ~ "EN",
-                   prpdeg_step >= 0.5 ~ "VU",
+    mutate(D3_step = case_when(prcdeg_step >= 90 ~ "CR",
+                   prcdeg_step >= 70 ~ "EN",
+                   prcdeg_step >= 50 ~ "VU",
                   TRUE ~ "LC")) %>%
     left_join(step_list, by = "T_MAPCODE") %>%
    mutate(ext_step = ext_step/(nat + notnat + deg80))

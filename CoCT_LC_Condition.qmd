@@ -73,15 +73,15 @@ coct_sum <- coct_rall %>%
   group_by(T_MAPCODE, LCcomb) %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
-    mutate(prpdeg = deg80/(nat+deg80)) %>% # cond of remnants (D1)
-    mutate(prplost = notnat/(nat+notnat+deg80)) %>% # ext of remnants (A3)
-    mutate(D3 = case_when(prpdeg >= 0.9 ~ "CR",
-                   prpdeg >= 0.7 ~ "EN",
-                   prpdeg >= 0.5 ~ "VU",
+    mutate(prcdeg_coct = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D1)
+    mutate(prclost_coct = 100* round(notnat/(nat+notnat+deg80),2)) %>% # ext of remnants (A3)
+    mutate(D3 = case_when(prcdeg_coct >= 90 ~ "CR",
+                   prcdeg_coct >= 70 ~ "EN",
+                   prcdeg_coct >= 50 ~ "VU",
                   TRUE ~ "LC"))  %>%
-  mutate(A3 = case_when(prplost >= 0.9 ~ "CR",
-                   prplost >= 0.7 ~ "EN",
-                   prplost >= 0.5 ~ "VU",
+  mutate(A3 = case_when(prclost_coct >= 90 ~ "CR",
+                   prclost_coct >= 70 ~ "EN",
+                   prclost_coct >= 50 ~ "VU",
                   TRUE ~ "LC")) %>%
       left_join(coct_list, by = "T_MAPCODE") %>%
    mutate(ext_coct = ext_coct/(nat + notnat + deg80))
