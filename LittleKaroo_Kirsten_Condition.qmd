@@ -1,0 +1,89 @@
+---
+bibliography: references.bib
+---
+
+### Load required packages
+
+```{r}
+#load packages   
+library(terra)  
+library(tidyverse) 
+library(sf) 
+library(PROJ) 
+```
+
+### Data sources & import:
+
+1.  Regional land degradation assessment for the Little Karoo conducted by Kirsten et al in 2023 [@kirsten2023].
+
+2.  National Land Cover (7 class version prepared by SANBI) 2022.
+
+3.  National Vegetation Map 2024 version, vector data (ESRI file geodatabase) January 2025 curated by SANBI [@rutherford2006; @Dayaram2019].
+
+```{r}
+# Add Little Karoo degradation data (prepared in ARCGIS PRO), where 0 = inside AOI but level of degradation < that 80%; where 8 = severely degraded >= 80%). 
+LKkir <- rast("C:/Users/skownoa/Dropbox/NBAwork/RLEworking/Alternative_LC_DEG/lk_kirsten.tif")
+
+# Add national LC, resample to match 20m AEA grid used for supplementary analysis
+nlc <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif" )
+nlc <- resample(nlc, LKkir, method = "near") #  match extent 
+
+# Add vegetation data  
+veg <- vect("C:/GIS/NBA/VegMap/VEGMAP2024/NVM2024final/NVM2024final.gdb", "NVM2024Final_IEM5_12_07012025")  
+
+# Clean up non veg names 
+veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE)   
+# rasterise the veg vector 
+veg_r <- rasterize(veg, nlc, "T_MAPCODE")  
+```
+
+## Analysis
+
+*Cross-tabulate land cover time series with vegetation.*
+
+Step 1. Stack the land cover for each time period with the vegetation data.
+
+Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (from Land Cover) to the output table (in tibble format). Rename each output column as "LC" to allow binding later.\
+
+```{r}
+# Analysis #Step 1-2.   # get LC  at 1990 time period 
+lkk_rall  <- as_tibble(crosstab(c(nlc, veg_r, LKkir)))   
+write.csv(lkk_rall, file = "outputs/lkk_rall.csv")
+
+# Import cross tab output to avoid running spatial analysis 
+#lkk_rall <- read.csv("C:/Rdata/LCC_terr/outputs/lkk_rall.csv")
+
+# Calculate extent of each vegtype within the specific AOI 
+lkk_list <- lkk_rall %>%
+  filter(lk_kirsten != 99, T_MAPCODE != "NOTVEG") %>%
+  group_by(T_MAPCODE) %>%
+  summarise(ext_lkk = sum(n)*400/1000000)
+
+# clean up names and add km2
+lkk_rall  <- lkk_rall  %>%    
+  mutate(km2 = n*400/1000000) %>% # pixel size is 20m
+  rename(LC = nlc2022_7class) %>%
+  rename(LKK = lk_kirsten)
+
+options(scipen =999)
+lkk_sum <- lkk_rall %>%
+  filter(T_MAPCODE != "NOTVEG") %>%
+  mutate(LCcomb = case_when(
+                            LKK == 8 ~ "deg80", 
+                            LC == 1 ~ "nat", 
+                            LC > 1 ~ "notnat", 
+                            TRUE ~ "unknown")) %>%
+  group_by(T_MAPCODE, LCcomb) %>%
+  summarise(km2tot = sum(km2)) %>%
+  pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
+    mutate(prcdeg_lkk = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D3)
+    mutate(D3_lkk = case_when(prcdeg_lkk >= 90 ~ "CR",
+                   prcdeg_lkk >= 70 ~ "EN",
+                   prcdeg_lkk >= 50 ~ "VU",
+                  TRUE ~ "LC")) %>%
+    left_join(lkk_list, by = "T_MAPCODE") %>%
+   mutate(ext_lkk = ext_lkk/(nat + notnat + deg80))
+
+write.csv(lkk_sum, file = "outputs/lkk_sum.csv")
+  
+```

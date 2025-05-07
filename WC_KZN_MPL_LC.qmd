@@ -123,7 +123,7 @@ alt_sum <- alt_rall %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prclost_alt = 100*round(notnat/(nat+notnat),2)) %>% # ext of remnants (A3)
     mutate(A3_alt = case_when(prclost_alt >= 90 ~ "CR",
-                   prclost_alt >= 50 ~ "EN",
+                   prclost_alt >= 70 ~ "EN",
                    prclost_alt >= 50 ~ "VU",
                   TRUE ~ "LC")) %>% 
    left_join(wc_list, by = "T_MAPCODE") %>%

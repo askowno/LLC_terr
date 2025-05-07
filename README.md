@@ -37,6 +37,29 @@ L--> O(Summarise lc7_rall.csv or sa_lc7_rall.csv);
 
 Land cover and ecosystem condition products prepared by provincial or metropolitan environmental authorities and major region environmental programmes have high confidence estimates and, due to their more local focus and extensive error correction and validation steps. Where available these data are used in conjunction with national data sets to estimate remaining extent of selected ecosystem types and to estimate the extent (required for Criterion A) and severity of functional declines (required for Criterion D).
 
+``` mermaid
+flowchart LR
+
+subgraph A1[Reclass and Stack]
+    A[Western Cape LC] -- reclass in ARCPRO --> B(wc.tif) -- load to R terra --> K(Stack);
+    C[Mpumalanga LC] -- reclass in ARCPRO --> D(mp.tif) -- load to R terra --> K;
+    E[KwaZulu-Natal LC] -- reclass in ARCPRO --> F(kzn.tif) -- load to R terra --> K --> L(CrossTab & summarise altsum.csv);
+    G[City of Cape Town LC/Cond] -- reclass in ARCPRO --> H(coct.tif) -- load to R terra --> N(CrossTab & summarise coctsum.csv);
+    I[Nelson Mandela Metro Cond] -- reclass in ARCPRO --> J(nmb.tif) -- load to R terra --> O(CrossTab & summarise nmbsum.csv);
+    P[STEP Cond] -- reclass in ARCPRO --> R_step(step.tif) -- load to R terra --> Q(CrossTab & summarise stepsum.csv);
+    P1[Little Karoo Thompson Cond] -- reclass in ARCPRO --> R1_lk(lk.tif) -- load to R terra --> Q1(CrossTab & summarise lksum.csv);
+    P2[Little Karoo Kirsten Cond] -- reclass in ARCPRO --> R2_lkk(lkk.tif) -- load to R terra --> Q2(CrossTab & summarise lkksum.csv);
+    P3[Hardeveld Cond] -- reclass in ARCPRO --> R3_hv(hv.tif) -- load to R terra --> Q3(CrossTab & summarise hvsum.csv);
+end
+
+
+subgraph Y
+        M[National Vegetation Map 2024] --> L & N & O & Q & Q1 & Q2 & Q3;
+end
+```
+
+### 
+
 #### Alternative Western Cape, Mpumalanga and KwaZulu-Natal land cover
 
 [WC_KZN_MPL_LC.qmd](WC_KZN_MPL_LC.qmd)
@@ -85,4 +108,20 @@ Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2
 
 2.  Note - SANBI recieved detailed information and supplementary assessment testimony from Cape Nature (Annalize Schutte Vlok) and independant botanist Jan Vlok for Vegetation unit (SKv11) Eastern Little Karoo. the assessment was based on extensive field surveys and aerial photographs. Severely overgrazed / browsed / trampled areas (severity of \> 80%), with evidence (aerial photos) that the degradation occurred in the last 50 years (Criterion D1). The supplementary data and information demonstrates that the degree of biotic disruption and loss of cover severely impairs the ability of he ELK vegetation to naturally regenerate. **The supplementary assessment (2020) resulted in an RLE status of Endangered (D1) for ELK.** Further data available from SANBI.
 
-*The ecosystem data (vegetation types), and NLC and Little Karoo data were cross tabulated and then summarised to assess Criterion A3 and D3 of the IUCN RLE.* Results for Little Karoo [outputs/lk_sum.csv](outputs/lk_sum.csv).
+*The ecosystem data (vegetation types), and NLC and Little Karoo data were cross tabulated and then summarised to assess Criterion D1 and D3 of the IUCN RLE.* Results for Little Karoo [outputs/lk_sum.csv](outputs/lk_sum.csv).
+
+#### Hardeveld degradation study and ecosystem condition map
+
+[Hardeveld_Condition.qmd](Hardeveld_Condition.qmd)
+
+1.  The Hardeveld Bioregion degradation map developed in 2021 ([Bell, et al. 2021](https://doi.org/10.1002/ldr.3900)). The severely degraded class (degradation archetype = Well Below Average) was estimated to be equivalent to 80% severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of palatable species usually dominant), increase in bare ground fraction (with soil loss). Most impacts occurred more than 50 years ago, and in this arid region the perrenial shrub cover recover readily, rather it enters an alternative stable state - bare ground with annual grass and herbs following rainfall events).
+
+*The ecosystem data (vegetation types), and NLC and Hardeveld data were cross tabulated and then summarised to assess Criterion D3 of the IUCN RLE.* Results for Hardeveld [outputs/hv_sum.csv](outputs/hv_sum.csv).
+
+#### Little Karoo degradation study and ecosystem condition map by Kirsten et al. 
+
+[LittleKaroo_Kirsten_Condition.qmd](LittleKaroo_Kirsten_Condition.qmd)
+
+1.  The Little kroo degradation map developed in 2023 ([Kirsten, et al. 2023](https://doi.org/10.1016/j.jaridenv.2023.105066)). The severely degraded class (degradation archetype = Well Below Average) was estimated to be equivalent to 80% severity on RLE Criterion D - factors include overgrazing / browsing resulting in severe reduction in shrub canopy cover, changes in species composition (loss of palatable species usually dominant), increase in bare ground fraction (with soil loss). Most impacts occurred more than 50 years ago, and in this arid region the perrenial shrub cover recover readily, rather it enters an alternative stable state - bare ground with annual grass and herbs following rainfall events).
+
+*The ecosystem data (vegetation types), and NLC and Little Karoo (Kirsten) data were cross tabulated and then summarised to assess Criterion D3 of the IUCN RLE.* Results for Little Karoo (Kirsten data) [outputs/lkk_sum.csv](outputs/lkk_sum.csv).
