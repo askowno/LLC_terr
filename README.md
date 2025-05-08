@@ -53,7 +53,7 @@ subgraph A1[Worflow]
 end
 
 
-subgraph Y []
+subgraph Y[]
         M[National Vegetation Map 2024] --> L & N & O & Q & Q1 & Q2 & Q3;
 end
 ```
