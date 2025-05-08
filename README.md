@@ -40,20 +40,20 @@ Land cover and ecosystem condition products prepared by provincial or metropolit
 ``` mermaid
 flowchart LR
 
-subgraph A1[Prepare each layer]
-    A[Western Cape LC] -- reclass in ARCPRO --> B(wc.tif) -- load to R terra --> K(Stack);
-    C[Mpumalanga LC] -- reclass in ARCPRO --> D(mp.tif) -- load to R terra --> K;
-    E[KwaZulu-Natal LC] -- reclass in ARCPRO --> F(kzn.tif) -- load to R terra --> K --> L(CrossTab & summarise altsum.csv);
-    G[City of Cape Town LC/Cond] -- reclass in ARCPRO --> H(coct.tif) -- load to R terra --> N(CrossTab & summarise coctsum.csv);
-    I[Nelson Mandela Metro Cond] -- reclass in ARCPRO --> J(nmb.tif) -- load to R terra --> O(CrossTab & summarise nmbsum.csv);
-    P[STEP Cond] -- reclass in ARCPRO --> R_step(step.tif) -- load to R terra --> Q(CrossTab & summarise stepsum.csv);
-    P1[Little Karoo Thompson Cond] -- reclass in ARCPRO --> R1_lk(lk.tif) -- load to R terra --> Q1(CrossTab & summarise lksum.csv);
-    P2[Little Karoo Kirsten Cond] -- reclass in ARCPRO --> R2_lkk(lkk.tif) -- load to R terra --> Q2(CrossTab & summarise lkksum.csv);
-    P3[Hardeveld Cond] -- reclass in ARCPRO --> R3_hv(hv.tif) -- load to R terra --> Q3(CrossTab & summarise hvsum.csv);
+subgraph A1[Worflow]
+    A[Western Cape LC] -- reclass in ARCPRO --> B(wc_lc3.tif) -- load to R terra --> K(Stack);
+    C[Mpumalanga LC] -- reclass in ARCPRO --> D(mpl_lc3.tif) -- load to R terra --> K;
+    E[KwaZulu-Natal LC] -- reclass in ARCPRO --> F(kzn_lc2.tif) -- load to R terra --> K --> L(CrossTab & summarise outputs/alt_sum.csv);
+    G[City of Cape Town LC/Cond] -- reclass in ARCPRO --> H(coct_cond10.tif) -- load to R terra --> N(CrossTab & summarise outputs/coct_sum.csv);
+    I[Nelson Mandela Metro Cond] -- reclass in ARCPRO --> J(nmb_lcdeg2.tif) -- load to R terra --> O(CrossTab & summarise outputs/nmb_sum.csv);
+    P[STEP Cond] -- reclass in ARCPRO --> R_step(step_deg2.tif) -- load to R terra --> Q(CrossTab & summarise outputs/step_sum.csv);
+    P1[Little Karoo Thompson Cond] -- reclass in ARCPRO --> R1_lk(littlekaroo_deg4.tif) -- load to R terra --> Q1(CrossTab & summarise outputs/lk_sum.csv);
+    P2[Little Karoo Kirsten Cond] -- reclass in ARCPRO --> R2_lkk(lk_kirsten.tif) -- load to R terra --> Q2(CrossTab & summarise outputs/lkk_sum.csv);
+    P3[Hardeveld Cond] -- reclass in ARCPRO --> R3_hv(hv_bell.tif) -- load to R terra --> Q3(CrossTab & summarise outputs/hv_sum.csv);
 end
 
 
-subgraph Y[Crosstabulate with ecosystem map]
+subgraph Y []
         M[National Vegetation Map 2024] --> L & N & O & Q & Q1 & Q2 & Q3;
 end
 ```
