@@ -40,7 +40,7 @@ Land cover and ecosystem condition products prepared by provincial or metropolit
 ``` mermaid
 flowchart LR
 
-subgraph A1[Reclass and Stack]
+subgraph A1[Prepare each layer]
     A[Western Cape LC] -- reclass in ARCPRO --> B(wc.tif) -- load to R terra --> K(Stack);
     C[Mpumalanga LC] -- reclass in ARCPRO --> D(mp.tif) -- load to R terra --> K;
     E[KwaZulu-Natal LC] -- reclass in ARCPRO --> F(kzn.tif) -- load to R terra --> K --> L(CrossTab & summarise altsum.csv);
@@ -53,7 +53,7 @@ subgraph A1[Reclass and Stack]
 end
 
 
-subgraph Y
+subgraph Y[Crosstabulate with ecosystem map]
         M[National Vegetation Map 2024] --> L & N & O & Q & Q1 & Q2 & Q3;
 end
 ```
@@ -118,7 +118,7 @@ Sub Tropical Ecosystem Project (STEP) Thicket degradation layer (Lloyd et al., 2
 
 *The ecosystem data (vegetation types), and NLC and Hardeveld data were cross tabulated and then summarised to assess Criterion D3 of the IUCN RLE.* Results for Hardeveld [outputs/hv_sum.csv](outputs/hv_sum.csv).
 
-#### Little Karoo degradation study and ecosystem condition map by Kirsten et al. 
+#### Little Karoo degradation study and ecosystem condition map by Kirsten et al.
 
 [LittleKaroo_Kirsten_Condition.qmd](LittleKaroo_Kirsten_Condition.qmd)
 
