@@ -77,10 +77,9 @@ lk_sum <- lk_rall %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prcdeg_lk = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D3)
-    mutate(D3_lk = case_when(prcdeg_lk >= 90 ~ "CR",
-                   prcdeg_lk >= 70 ~ "EN",
-                   prcdeg_lk >= 50 ~ "VU",
-                  TRUE ~ "LC")) %>%
+    mutate(D3_lk = case_when(prcdeg_lk >= 90 ~ "EN",
+                   prcdeg_lk >= 70 ~ "VU",
+                   TRUE ~ "LC")) %>%
     left_join(lk_list, by = "T_MAPCODE") %>%
    mutate(ext_lk = ext_lk/(nat + notnat + deg80))
 
