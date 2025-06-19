@@ -47,11 +47,11 @@ Step 2. Cross-tabulate each raster stack and add a column denoting the YEAR (fro
 
 ```{r}
 # Analysis #Step 1-2.   # get LC  at 1990 time period 
-lkk_rall  <- as_tibble(crosstab(c(nlc, veg_r, LKkir)))   
-write.csv(lkk_rall, file = "outputs/lkk_rall.csv")
+#lkk_rall  <- as_tibble(crosstab(c(nlc, veg_r, LKkir)))   
+#write.csv(lkk_rall, file = "outputs/lkk_rall.csv")
 
 # Import cross tab output to avoid running spatial analysis 
-#lkk_rall <- read.csv("C:/Rdata/LCC_terr/outputs/lkk_rall.csv")
+lkk_rall <- read.csv("C:/Rdata/LCC_terr/outputs/lkk_rall.csv")
 
 # Calculate extent of each vegtype within the specific AOI 
 lkk_list <- lkk_rall %>%
@@ -77,10 +77,9 @@ lkk_sum <- lkk_rall %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prcdeg_lkk = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D3)
-    mutate(D3_lkk = case_when(prcdeg_lkk >= 90 ~ "CR",
-                   prcdeg_lkk >= 70 ~ "EN",
-                   prcdeg_lkk >= 50 ~ "VU",
-                  TRUE ~ "LC")) %>%
+    mutate(D3_lkk = case_when(prcdeg_lkk >= 90 ~ "EN",
+                   prcdeg_lkk >= 70 ~ "VU",
+                   TRUE ~ "LC")) %>%
     left_join(lkk_list, by = "T_MAPCODE") %>%
    mutate(ext_lkk = ext_lkk/(nat + notnat + deg80))
 
