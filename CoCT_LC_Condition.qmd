@@ -75,9 +75,8 @@ coct_sum <- coct_rall %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prcdeg_coct = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D1)
     mutate(prclost_coct = 100* round(notnat/(nat+notnat+deg80),2)) %>% # ext of remnants (A3)
-    mutate(D3_coct = case_when(prcdeg_coct >= 90 ~ "CR",
-                   prcdeg_coct >= 70 ~ "EN",
-                   prcdeg_coct >= 50 ~ "VU",
+    mutate(D3_coct = case_when(prcdeg_coct >= 90 ~ "EN",
+                   prcdeg_coct >= 70 ~ "VU",
                   TRUE ~ "LC"))  %>%
   mutate(A3_coct = case_when(prclost_coct >= 90 ~ "CR",
                    prclost_coct >= 70 ~ "EN",
