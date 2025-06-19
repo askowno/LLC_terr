@@ -6,7 +6,7 @@ South African National Biodiversity Institute (SANBI)
 
 May 2025
 
-### Step 1: National land cover change data 
+### Step 1: National land cover change data
 
 Land cover change spatial analysis for the 2025 National Biodiversity Assessment is based on the cross-tabulation of land cover change data and maps of potential vegetation (terrestrial ecosystem types).
 
@@ -33,7 +33,7 @@ N[national mask] --_optional_step--> L;
 L--> O(Summarise lc7_rall.csv or sa_lc7_rall.csv);
 ```
 
-### Step 2: Supplementary land cover and ecosystem condition data 
+### Step 2: Supplementary land cover and ecosystem condition data
 
 Land cover and ecosystem condition products prepared by provincial or metropolitan environmental authorities and major region environmental programmes have high confidence estimates and, due to their more local focus and extensive error correction and validation steps. Where available these data are used in conjunction with national data sets to estimate remaining extent of selected ecosystem types and to estimate the extent (required for Criterion A) and severity of functional declines (required for Criterion D).
 
@@ -108,7 +108,7 @@ Little Karoo degradation map developed in 2009 ([Thompson et al., 2009](https://
 
 *The ecosystem data (vegetation types), and NLC and Little Karoo data were cross tabulated and then summarised to assess Criterion D1 and D3 of the IUCN RLE.* Results for Little Karoo [outputs/lk_sum.csv](outputs/lk_sum.csv).
 
-#### vi) Hardeveld degradation study and ecosystem condition 
+#### vi) Hardeveld degradation study and ecosystem condition
 
 [Hardeveld_Condition.qmd](Hardeveld_Condition.qmd)
 
