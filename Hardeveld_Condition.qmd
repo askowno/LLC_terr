@@ -77,8 +77,8 @@ hv_sum <- hv_rall %>%
   summarise(km2tot = sum(km2)) %>%
   pivot_wider(names_from = LCcomb, values_from = km2tot) %>%
     mutate(prcdeg_hv = 100*round(deg80/(nat+deg80),2)) %>% # cond of remnants (D3)
-    mutate(D3_hv = case_when(prcdeg_hv >= 70 ~ "EN",
-                   prcdeg_hv >= 50 ~ "VU",
+    mutate(D3_hv = case_when(prcdeg_hv >= 90 ~ "EN",
+                   prcdeg_hv >= 70 ~ "VU",
                    TRUE ~ "LC")) %>%
     left_join(hv_list, by = "T_MAPCODE") %>%
    mutate(ext_hv = ext_hv/(nat + notnat + deg80))
