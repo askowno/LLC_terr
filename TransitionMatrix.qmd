@@ -1,0 +1,75 @@
+---
+title: "TransitionMatrix"
+format: html
+---
+
+```{r}
+library(terra)
+library(tidyverse)
+```
+
+```{r}
+# load data and prep - ensure  proj =  wgs84 aea cm 25 -24 -33
+
+lc1990 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc1990_7class.tif") 
+lc2018 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2018_7class.tif")
+lc2022 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif")
+veg <- vect("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/NLC_Change.gdb", "NVM2024Final_IEM5_12_07012025")  
+
+# Mask out Lesotho and Eswatini to ensure SA statistics
+bound <- vect("C:/Users/skownoa/Dropbox/NBAwork/SA_Boundaries/SA_Boundaries_v12.shp") #ensure it uses proj =  wgs84 aea cm 25 -24 -33
+
+mask <- bound[bound$PROVINCE %in% c("Lesotho", "Eswatini"), ]
+
+vegmasked <- erase(veg, mask)
+
+# make biome raster
+biome <- rasterize(vegmasked,lc1990,"T_BIOME")
+
+```
+
+```{r}
+# Cross tabulate lc t1 and lc t2  and biomes - this forms the basis for transition matrix contruction
+
+# Transition matrix 1990 x 2022 with biomes ##################################
+cb <- as_tibble(crosstab(c(lc1990,lc2022, biome)))  
+cb_90x22 <- cb %>%
+  mutate(km2 = n*400/1000000) %>%
+  rename(lc90 = nlc1990_7class, lc22 = nlc2022_7class, biome = T_BIOME)
+
+write.csv(cb_90x22, file = "outputs/cb_90x22.csv")
+
+# make confusion matrix / transition matrix
+mt_90x22 <- cb_90x22 %>%
+  group_by(lc90, lc22) %>%
+  summarise(km2 = sum(km2, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(
+    names_from = lc22,
+    values_from = km2,
+    values_fill = list(km2 = 0)
+  ) %>%
+  select(-lc90)
+
+write.csv(mt_90x22, file = "outputs/mt_90x22.csv")
+
+# Transition matrix 2018 x 2022 with biomes ###################################
+cb2 <- as_tibble(crosstab(c(lc2018,lc2022, biome)))  
+cb_18x22 <- cb2 %>%
+  mutate(km2 = n*400/1000000) %>%
+  rename(lc18 = nlc2018_7class, lc22 = nlc2022_7class, biome = T_BIOME)
+
+write.csv(cb_18x22, file = "outputs/cb_14x22.csv")
+
+# make confusion matrix / transition matrix
+mt_18x22 <- cb_18x22 %>%
+  group_by(lc18, lc22) %>%
+  summarise(km2 = sum(km2, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(
+    names_from = lc22,
+    values_from = km2,
+    values_fill = list(km2 = 0)
+  ) %>%
+  select(-lc18)
+
+write.csv(mt_18x22, file = "outputs/mt_14x22.csv")
+```

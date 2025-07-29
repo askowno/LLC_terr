@@ -45,44 +45,30 @@ lc2018 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2018_7class.tif")
 lc2020 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2020_7class.tif")
 lc2022 <- rast("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/nlc2022_7class.tif")
 
-
-#aggregate to test - drop this step when all is working - full processing takes 16hours -----------------------------------------------------------------------
-# agg_fact <- 20
-#  mode_function <- function(x) {
-#      ux <- unique(x)
-#      ux[which.max(tabulate(match(x, ux)))]
-#  }
-# lc1990 <- aggregate(lc1990, fact = agg_fact, fun = mode_function)
-# lc2014 <- resample(lc2014, lc1990, method = "near")
-# lc2018 <- resample(lc2018, lc1990, method = "near")
-# lc2020 <- resample(lc2020, lc1990, method = "near")
-# lc2022 <- resample(lc2022, lc1990, method = "near")
-
-#----------------------------------------------------------------------------
-
 veg <- vect("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/NLC_Change.gdb", "NVM2024Final_IEM5_12_07012025")  #ensure it uses proj =  wgs84 aea cm 25 -24 -33
 
 # to help differentiate masked areas (LES and SWA) from NON TERRESTRIAL areas add "NOTVEG" to T_MAPCODE where T_NAME = "Non-Terrestrial*"
 veg$T_MAPCODE <- ifelse(veg$T_Name == "Non-terrestrial (estuarine habitat)" | veg$T_Name == "Non-terrestrial (Aquatic)", "NOTVEG", veg$T_MAPCODE) 
 
-# rasterise the veg vector
-vegrast <- rasterize(veg,lc1990,"T_MAPCODE") 
 
 ```
 
-#### Mask out Lesotho and Eswatini
+#### Mask out Lesotho and Eswatini and then rasterize eg
 
 To ensure the statistics on land cover change are applicable to South Africa the countries of Lesotho and Eswatini (which are covered by the input LC and VEG data above) need to be masked out. For RLE processes these are left in the workflow as the statistics need to be applicable to whole vegetation types.
 
 ```{r}
-# import a polygon  of  Eswatini and Lesotho then make a raster mask for this and apply to vegmap so the stats generated are National Statistics
+# import a polygon  of  SA Boundaries then make a  mask  and apply to vegmap so the stats generated are National Statistics
 
-esw_les <- vect("C:/Users/skownoa/Dropbox/NBAwork/NLC_change/NLC_change.gdb", "mask_esw_les") #ensure it uses proj =  wgs84 aea cm 25 -24 -33
+# Mask out Lesotho and Eswatini to ensure SA statistics
+bound <- vect("C:/Users/skownoa/Dropbox/NBAwork/SA_Boundaries/SA_Boundaries_v12.shp") #ensure it uses proj =  wgs84 aea cm 25 -24 -33
+# make a mask
+mask <- bound[bound$PROVINCE %in% c("Lesotho", "Eswatini"), ]
+# erase Les  and Esw
+vegmasked <- erase(veg, mask)
 
-mask_esw_les <- rasterize(esw_les, vegrast, "CODE")
-mask_esw_les <- (mask_esw_les =="LeS") # had to do this as just using mask raster does not work for some reason
-
-vegrast_masked <- mask(vegrast, mask_esw_les, maskvalue=TRUE)
+# make veg  raster
+vegrast_masked <- rasterize(vegmasked,lc1990,"T_MAPCODE")
 
 ```
 
@@ -185,7 +171,7 @@ Summarise LC7 for each BIOME, LC class etc. By importing sa_lc7_rall.csv to exce
 
 ```{r}
 # if required import data from spatial analysis above
-# sa_lc7_rall <- read_csv("outputs/sa_lc7_rall.csv", show_col_types = FALSE)
+ sa_lc7_rall <- read_csv("outputs/sa_lc7_rall.csv", show_col_types = FALSE)
 
 # summarise per Veg Type
 options(scipen = 999)
@@ -298,6 +284,8 @@ ggsave(
   width = 16, height = 12, units = "cm",   # Dimensions
   dpi = 300                               # Resolution
 )
+
+
 ```
 
 ```{r}
